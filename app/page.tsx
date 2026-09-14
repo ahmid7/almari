@@ -1,5 +1,6 @@
 import HowItworks from "@/components/howItworks";
 import FiveKindsOfIntelligence from "@/components/fiveKindsOfIntelligence";
+import Pricing from "@/components/pricing";
 
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <main>
       <HowItworks />
       <FiveKindsOfIntelligence />
+      <Pricing />
     </main>
   );
 }

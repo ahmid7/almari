@@ -22,9 +22,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${tiktokSans.variable} ${poppins.variable} h-full antialiased`}
+      className={`${tiktokSans.variable} ${poppins.variable} h-full antialiased `}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col text-[#fef7ff]">
+        {children}
+      </body>
     </html>
   );
 }

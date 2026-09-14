@@ -135,8 +135,21 @@ function FiveKindsOfIntelligence() {
 
                 <ul className="space-y-2 text-base leading-6 text-surface">
                   {card.points.map((point) => (
-                    <li key={point} className="flex gap-2">
-                      <span className="text-brand">→</span>
+                    <li key={point} className="flex items-center gap-2">
+                      <span className="text-brand">
+                        <svg
+                          width="12"
+                          height="10"
+                          viewBox="0 0 12 10"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M-6.63996e-05 4.06412H10.0639L9.87193 4.41612L6.04793 0.816121L6.87993 0.000120163L11.5199 4.65612L6.87993 9.29612L6.04793 8.48012L9.87193 4.89612L10.0639 5.24812H-6.63996e-05V4.06412Z"
+                            fill="#DA4403"
+                          />
+                        </svg>
+                      </span>
                       <span>{point}</span>
                     </li>
                   ))}

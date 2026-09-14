@@ -1,10 +1,12 @@
 import HowItworks from "@/components/howItworks";
+import FiveKindsOfIntelligence from "@/components/fiveKindsOfIntelligence";
 
 
 export default function Home() {
   return (
-    <section className="">
+    <main>
       <HowItworks />
-    </section>
+      <FiveKindsOfIntelligence />
+    </main>
   );
 }

@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fef7ff;
+  --surface: #e6e5e6;
+  --brand: #da4403;
+  --foreground: #222121;
+  --muted: #323232;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-brand: var(--brand);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-tiktok-sans);
+  --font-tiktok: var(--font-tiktok-sans);
+  --font-poppins: var(--font-poppins);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-tiktok-sans), sans-serif;
+}

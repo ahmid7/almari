@@ -3,6 +3,7 @@ import FiveKindsOfIntelligence from "@/components/fiveKindsOfIntelligence";
 import Pricing from "@/components/pricing";
 import Faq from "@/components/faq";
 import PurposeCta from "@/components/purposeCta";
+import Footer from "@/components/footer";
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Pricing />
       <Faq />
       <PurposeCta />
+      <Footer />
     </main>
   );
 }

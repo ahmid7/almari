@@ -106,7 +106,7 @@ function Pricing() {
                 </div>
               </div>
 
-              <ul className="space-y-3 border-2 border-red-900">
+              <ul className="space-y-3">
                 {plan.features.map((feature) => (
                   <li
                     key={feature}

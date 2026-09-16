@@ -1,6 +1,8 @@
 import HowItworks from "@/components/howItworks";
 import FiveKindsOfIntelligence from "@/components/fiveKindsOfIntelligence";
 import Pricing from "@/components/pricing";
+import Faq from "@/components/faq";
+import PurposeCta from "@/components/purposeCta";
 
 
 export default function Home() {
@@ -9,6 +11,8 @@ export default function Home() {
       <HowItworks />
       <FiveKindsOfIntelligence />
       <Pricing />
+      <Faq />
+      <PurposeCta />
     </main>
   );
 }

@@ -131,8 +131,127 @@ body {
 .purpose-cta-animation.is-visible .purpose-cta-animation__heading span:nth-child(6) { animation-delay: .4s; }
 .purpose-cta-animation.is-visible > p { animation: pricing-rise .55s .5s ease-out forwards; }
 
+.faq-header-animation > * { opacity: 0; transform: translateY(20px); }
+.faq-header-animation__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .25em;
+  opacity: 1;
+  transform: none;
+}
+
+.faq-header-animation__heading span { opacity: 0; transform: translateX(-35px); }
+.faq-header-animation__heading span:nth-child(even) { transform: translateX(35px); }
+.faq-header-animation.is-visible > p { animation: pricing-rise .5s ease-out forwards; }
+.faq-header-animation.is-visible .faq-header-animation__heading { animation: none; }
+.faq-header-animation.is-visible .faq-header-animation__heading span { animation: pricing-drift .65s cubic-bezier(.22,1,.36,1) forwards; }
+.faq-header-animation.is-visible .faq-header-animation__heading span:nth-child(2) { animation-delay: .08s; }
+.faq-header-animation.is-visible .faq-header-animation__heading span:nth-child(3) { animation-delay: .16s; }
+.faq-header-animation.is-visible .faq-header-animation__heading span:nth-child(4) { animation-delay: .24s; }
+.faq-header-animation.is-visible .faq-header-animation__heading span:nth-child(5) { animation-delay: .32s; }
+.faq-header-animation.is-visible .faq-header-animation__heading span:nth-child(6) { animation-delay: .4s; }
+
+.intelligence-header-animation > * { opacity: 0; transform: translateY(20px); }
+.intelligence-header-animation__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .25em;
+  opacity: 1;
+  transform: none;
+}
+
+.intelligence-header-animation__heading span { opacity: 0; transform: translateX(-35px); }
+.intelligence-header-animation__heading span:nth-child(even) { transform: translateX(35px); }
+.intelligence-header-animation.is-visible > p { animation: pricing-rise .5s ease-out forwards; }
+.intelligence-header-animation.is-visible .intelligence-header-animation__heading { animation: none; }
+.intelligence-header-animation.is-visible .intelligence-header-animation__heading span { animation: pricing-drift .65s cubic-bezier(.22,1,.36,1) forwards; }
+.intelligence-header-animation.is-visible .intelligence-header-animation__heading span:nth-child(2) { animation-delay: .08s; }
+.intelligence-header-animation.is-visible .intelligence-header-animation__heading span:nth-child(3) { animation-delay: .16s; }
+.intelligence-header-animation.is-visible .intelligence-header-animation__heading span:nth-child(4) { animation-delay: .24s; }
+.intelligence-header-animation.is-visible .intelligence-header-animation__heading span:nth-child(5) { animation-delay: .32s; }
+
+.how-it-works-header-animation > * { opacity: 0; transform: translateY(20px); }
+.how-it-works-header-animation__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .25em;
+  opacity: 1;
+  transform: none;
+}
+
+.how-it-works-header-animation__heading span { opacity: 0; transform: translateX(-35px); }
+.how-it-works-header-animation__heading span:nth-child(even) { transform: translateX(35px); }
+.how-it-works-header-animation.is-visible > p { animation: pricing-rise .5s ease-out forwards; }
+.how-it-works-header-animation.is-visible > p:last-child { animation-delay: .72s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading { animation: none; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span { animation: pricing-drift .65s cubic-bezier(.22,1,.36,1) forwards; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(2) { animation-delay: .08s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(3) { animation-delay: .16s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(4) { animation-delay: .24s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(5) { animation-delay: .32s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(6) { animation-delay: .4s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(7) { animation-delay: .48s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(8) { animation-delay: .56s; }
+.how-it-works-header-animation.is-visible .how-it-works-header-animation__heading span:nth-child(9) { animation-delay: .64s; }
+
+.intelligence-motion {
+  display: grid;
+  overflow: hidden;
+  border: 3px solid #4a4a4a;
+  background: #222121;
+}
+
+@media (min-width: 640px) { .intelligence-motion { grid-template-columns: 34% 1fr; } }
+.intelligence-motion__visual { position: relative; min-height: 230px; overflow: hidden; background: #da4403; }
+.intelligence-motion__visual::before { position: absolute; inset-block: 0; left: 36%; width: 28%; background: #e26b35; content: ""; }
+.intelligence-motion__rail { position: absolute; top: 28px; left: 18%; width: 64%; height: 5px; border-radius: 999px; background: #eee6df; }
+.intelligence-motion__garment { position: absolute; top: 34px; left: 32%; width: 36%; height: 72%; border-radius: 42% 42% 15% 15%; background: linear-gradient(90deg,#181818,#535353,#141414); box-shadow: inset 10px 0 15px rgb(255 255 255 / .13); }
+.intelligence-motion__tag { position: absolute; top: 48px; left: 13%; border-radius: 999px; background: rgb(255 255 255 / .85); padding: .3rem .6rem; color: #222121; font-size: .72rem; }
+.intelligence-motion__copy { padding: 2rem; }
+
+.intelligence-motion__visual, .intelligence-motion__copy { opacity: 0; }
+.intelligence-motion--editorial .intelligence-motion__visual { transform: translateX(-50px); }
+.intelligence-motion--editorial .intelligence-motion__copy { transform: translateX(35px); }
+.intelligence-motion--editorial.is-active .intelligence-motion__visual { animation: intelligence-in-left .65s cubic-bezier(.22,1,.36,1) forwards; }
+.intelligence-motion--editorial.is-active .intelligence-motion__copy { animation: intelligence-in-right .6s .14s cubic-bezier(.22,1,.36,1) forwards; }
+
+.intelligence-motion--focus .intelligence-motion__visual { filter: blur(12px); transform: scale(1.12); }
+.intelligence-motion--focus .intelligence-motion__copy { transform: translateY(28px); }
+.intelligence-motion--focus.is-active .intelligence-motion__visual { animation: intelligence-focus .75s cubic-bezier(.22,1,.36,1) forwards; }
+.intelligence-motion--focus.is-active .intelligence-motion__copy { animation: intelligence-rise .55s .38s ease-out forwards; }
+
+.intelligence-motion--unfold .intelligence-motion__visual { transform: scaleX(.06); transform-origin: left; }
+.intelligence-motion--unfold .intelligence-motion__copy { transform: translateX(20px); }
+.intelligence-motion--unfold.is-active .intelligence-motion__visual { animation: intelligence-unfold .75s cubic-bezier(.22,1,.36,1) forwards; }
+.intelligence-motion--unfold.is-active .intelligence-motion__copy { animation: intelligence-in-right .55s .52s ease-out forwards; }
+
+.intelligence-motion--alternate { transform: translateX(-65px); opacity: 0; }
+.intelligence-motion--alternate.is-active { animation: intelligence-card-in .7s cubic-bezier(.22,1,.36,1) forwards; }
+.intelligence-motion--alternate.is-active .intelligence-motion__visual { animation: intelligence-fade .4s .14s ease-out forwards; }
+.intelligence-motion--alternate.is-active .intelligence-motion__copy { animation: intelligence-rise .5s .25s ease-out forwards; }
+
+.intelligence-motion--depth { transform: translateY(45px) scale(.97); opacity: 0; }
+.intelligence-motion--depth .intelligence-motion__visual { transform: translateY(20px); }
+.intelligence-motion--depth .intelligence-motion__copy { transform: translateY(14px); }
+.intelligence-motion--depth.is-active { animation: intelligence-depth .8s cubic-bezier(.22,1,.36,1) forwards; }
+.intelligence-motion--depth.is-active .intelligence-motion__visual { animation: intelligence-rise .7s .12s ease-out forwards; }
+.intelligence-motion--depth.is-active .intelligence-motion__copy { animation: intelligence-rise .6s .26s ease-out forwards; }
+
+@keyframes intelligence-in-left { to { opacity: 1; transform: translateX(0); } }
+@keyframes intelligence-in-right { to { opacity: 1; transform: translateX(0); } }
+@keyframes intelligence-rise { to { opacity: 1; transform: translateY(0); } }
+@keyframes intelligence-focus { to { opacity: 1; filter: blur(0); transform: scale(1); } }
+@keyframes intelligence-unfold { to { opacity: 1; transform: scaleX(1); } }
+@keyframes intelligence-card-in { to { opacity: 1; transform: translateX(0); } }
+@keyframes intelligence-depth { to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes intelligence-fade { to { opacity: 1; } }
+
 @media (prefers-reduced-motion: reduce) {
   .pricing-motion * { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; width: auto !important; }
   .pricing-header-animation > * { animation: none !important; opacity: 1 !important; transform: none !important; }
   .purpose-cta-animation > *, .purpose-cta-animation__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .faq-header-animation > *, .faq-header-animation__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .intelligence-header-animation > *, .intelligence-header-animation__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .how-it-works-header-animation > *, .how-it-works-header-animation__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .intelligence-motion, .intelligence-motion * { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
 }

@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const intelligenceCards = [
   {
     eyebrow: "Your digital wardrobe",
@@ -95,15 +99,38 @@ function ProductVisual({ type }: { type: string }) {
 }
 
 function FiveKindsOfIntelligence() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-foreground text-background px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:mx-auto 2xl:container ">
+    <section ref={sectionRef} className="bg-foreground text-background px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:mx-auto 2xl:container ">
       <div className=" space-y-7 xl:space-y-10">
-        <div className="space-y-2 lg:space-y-3 xl:space-y-4">
+        <div className={`intelligence-header-animation space-y-2 lg:space-y-3 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
           <p className="text-base lg:text-lg xl:text-2xl font-medium text-brand leading-4.5 xl:leading-6">
             Five kinds of intelligence
           </p>
-          <h2 className="font-poppins text-2xl lg:text-3xl xl:text-5xl font-semibold leading-8 xl:leading-15">
-            Everything you own, working harder.
+          <h2 className="intelligence-header-animation__heading font-poppins text-2xl lg:text-3xl xl:text-5xl font-semibold leading-8 xl:leading-15">
+            {["Everything", "you", "own,", "working", "harder."].map((word) => (
+              <span key={word}>{word}</span>
+            ))}
           </h2>
         </div>
 

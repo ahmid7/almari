@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const faqs = [
   {
@@ -32,16 +32,38 @@ const faqs = [
 
 function Faq() {
   const [openIndex, setOpenIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="bg-[#222121]">
+    <section ref={sectionRef} className="bg-[#222121]">
       <div className="2xl:mx-auto 2xl:container px-4 py-20 sm:p-10 lg:p-14 xl:p-20 space-y-5 lg:space-y-7 xl:space-y-10">
-        <div className="space-y-2 lg:space-y-2.5 xl:space-y-4">
+        <div className={`faq-header-animation space-y-2 lg:space-y-2.5 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
           <p className="font-medium text-base lg:text-lg xl:text-2xl text-brand leading-6 lg:leading-6.5 xl:leading-9">
             Frequently Asked Questions
           </p>
-          <h2 className="font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 xl:leading-15 text-background">
-            Smart Answers for a Smarter Closet
+          <h2 className="faq-header-animation__heading font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 xl:leading-15 text-background">
+            {["Smart", "Answers", "for", "a", "Smarter", "Closet"].map((word) => (
+              <span key={word}>{word}</span>
+            ))}
           </h2>
         </div>
 

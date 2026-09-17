@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import React from "react";
 
 const howItWorksSteps = [
@@ -20,14 +23,37 @@ const howItWorksSteps = [
 ];
 
 function HowItworks() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:container 2xl:mx-auto bg-black space-y-10 md:space-y-7 xl:space-y-10">
-      <div className="max-w-100 lg:max-w-130 xl:max-w-171.5 space-y-2 lg:space-y-2.5 xl:space-y-4">
+    <section ref={sectionRef} className="relative px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:container 2xl:mx-auto bg-black space-y-10 md:space-y-7 xl:space-y-10">
+      <div className={`how-it-works-header-animation max-w-100 space-y-2 lg:max-w-130 lg:space-y-2.5 xl:max-w-171.5 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
         <p className=" font-medium text-base lg:text-lg xl:text-2xl text-brand leading-6 lg:leading-6.5 xl:leading-9">
           How Almari works
         </p>
-        <h2 className="font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 lg:leading-10 xl:leading-15 text-background">
-          From receipts and photos to a wardrobe that thinks.
+        <h2 className="how-it-works-header-animation__heading font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 lg:leading-10 xl:leading-15 text-background">
+          {["From", "receipts", "and", "photos", "to", "a", "wardrobe", "that", "thinks."].map((word) => (
+            <span key={word}>{word}</span>
+          ))}
         </h2>
         <p className="text-surface text-base lg:text-lg xl:text-2xl leading-6 md:leading-5 lg:leading-6.5 xl:leading-9">
           No manual data entry. Point Almari at where your clothes already live,

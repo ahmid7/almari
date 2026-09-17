@@ -43,52 +43,56 @@ const plans = [
 
 function Pricing() {
   return (
-    <section className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto p-20">
+    <section className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
       <div className="absolute inset-0 -z-10 opacity-35 [background-image:linear-gradient(30deg,transparent_48%,#4a4a4a_49%,#4a4a4a_51%,transparent_52%),linear-gradient(150deg,transparent_48%,#4a4a4a_49%,#4a4a4a_51%,transparent_52%)] [background-size:88px_52px]" />
 
-      <div className="space-y-10">
-        <div className="max-w-[690px] space-y-4">
-          <p className=" font-medium text-2xl text-brand leading-9">Pricing</p>
-          <h2 className="font-poppins font-semibold text-5xl leading-15 text-background">
+      <div className="space-y-7 xl:space-y-10">
+        <div className="max-w-[500px] xl:max-w-[690px] space-y-2 lg:space-y-3 xl:space-y-4">
+          <p className=" font-medium text-base lg:text-lg xl:text-2xl text-brand leading-6 lg:leading-6.5 xl:leading-9">
+            Pricing
+          </p>
+          <h2 className="font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 xl:leading-15 text-background">
             Simple Pricing, No Surprises.
           </h2>
-          <p className="text-surface text-2xl leading-9">
+          <p className="text-surface text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9">
             Every plan pays for itself the first time it talks you out of a
             purchase you&apos;d regret.
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-4 md:gap-3.5 xl:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className="relative rounded-3xl bg-foreground p-2 h-139.5 space-y-4"
+              className="relative rounded-3xl bg-foreground p-2 h-137.5 md:h-112 xl:h-139.5 space-y-3 xl:space-y-4"
             >
-              <div className="space-y-4">
+              <div className="space-y-3 xl:space-y-4">
                 {plan.popular && (
-                  <span className="absolute top-4 right-6 px-4 py-1 bg-brand text-base rounded text-white ">
+                  <span className="absolute top-4 right-6 px-3 xl:px-4 py-1 bg-brand text-sm xl:text-base rounded text-white ">
                     Popular
                   </span>
                 )}
 
-                <h3 className="text-2xl font-poppins font-semibold px-4 text-white py-2 ">
+                <h3 className="text-base lg:text-lg xl:text-2xl font-poppins font-semibold px-4 text-white py-2 ">
                   {plan.name}
                 </h3>
 
-                <div className="relative z-0 rounded-2xl p-4 bg-muted overflow-hidden">
+                <div className="relative z-0 rounded-2xl p-3 xl:p-4 bg-muted overflow-hidden">
                   <div className="space-y-2 relative z-10">
-                    <p className="text-base text-surface">{plan.description}</p>
+                    <p className="text-sm xl:text-base text-surface">
+                      {plan.description}
+                    </p>
 
-                    <div className="  font-poppins text-white">
-                      <span className="text-5xl  font-semibold leading-15 ">
+                    <div className=" font-poppins text-white">
+                      <span className="text-5xl md:text-2xl lg:text-3xl xl:text-5xl  font-semibold leading-15 sm:leading-8 xl:leading-15 ">
                         ${plan.price}
                       </span>
 
-                      <span className="text-base leading-15 h-fit">/month</span>
+                      <span className="text-sm xl:text-base leading-8 xl:leading-15 h-fit">/month</span>
                     </div>
 
                     <button
-                      className={`w-full rounded-lg py-5 text-xs font-semibold transition-colors hover:cursor-pointer ${plan.popular ? "bg-brand text-white hover:bg-[#b83702]" : "bg-foreground text-surface hover:bg-black "}`}
+                      className={`w-full rounded-lg py-4.5 sm:py-3.5 xl:py-5 text-xs font-semibold transition-colors hover:cursor-pointer ${plan.popular ? "bg-brand text-white hover:bg-[#b83702]" : "bg-foreground text-surface hover:bg-black "}`}
                     >
                       {plan.action}
                     </button>
@@ -106,15 +110,15 @@ function Pricing() {
                 </div>
               </div>
 
-              <ul className="space-y-3">
+              <ul className="space-y-2.5 xl:space-y-3.5">
                 {plan.features.map((feature) => (
                   <li
                     key={feature}
-                    className="text-base text-surface flex items-center"
+                    className="text-sm xl:text-base text-surface flex items-center"
                   >
                     <span className="">
                       <svg
-                        className="text-surface mr-2 size-6"
+                        className="text-surface mr-2 size-4.5 xl:size-6"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, TikTok_Sans, UnifrakturCook } from "next/font/google";
+import SmoothScroll from "@/components/smoothScroll";
 import "./globals.css";
 
 const tiktokSans = TikTok_Sans({
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${tiktokSans.variable} ${poppins.variable} ${unifrakturCook.variable} h-full antialiased `}
     >
       <body className="min-h-full flex flex-col text-[#fef7ff]">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

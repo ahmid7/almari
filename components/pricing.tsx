@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const plans = [
   {
@@ -42,17 +45,40 @@ const plans = [
 ];
 
 function Pricing() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
       <div className="absolute inset-0 -z-10 opacity-35 [background-image:linear-gradient(30deg,transparent_48%,#4a4a4a_49%,#4a4a4a_51%,transparent_52%),linear-gradient(150deg,transparent_48%,#4a4a4a_49%,#4a4a4a_51%,transparent_52%)] [background-size:88px_52px]" />
 
       <div className="space-y-7 xl:space-y-10">
-        <div className="max-w-[500px] xl:max-w-[690px] space-y-2 lg:space-y-3 xl:space-y-4">
+        <div className={`pricing-header-animation pricing-header-animation--drift max-w-[500px] space-y-2 lg:space-y-3 xl:max-w-[690px] xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
           <p className=" font-medium text-base lg:text-lg xl:text-2xl text-brand leading-6 lg:leading-6.5 xl:leading-9">
             Pricing
           </p>
-          <h2 className="font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 xl:leading-15 text-background">
-            Simple Pricing, No Surprises.
+          <h2 className="pricing-header-animation__heading font-poppins font-semibold text-2xl lg:text-3xl xl:text-5xl leading-8 xl:leading-15 text-background">
+            {['Simple', 'Pricing,', 'No', 'Surprises.'].map((word) => (
+              <span key={word}>{word}</span>
+            ))}
           </h2>
           <p className="text-surface text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9">
             Every plan pays for itself the first time it talks you out of a

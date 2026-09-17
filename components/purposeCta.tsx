@@ -1,13 +1,39 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 function PurposeCta() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-muted">
+    <section ref={sectionRef} className="bg-muted">
       <div className="2xl:mx-auto 2xl:container px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
         <div className="relative isolate overflow-hidden rounded-[30px] lg:rounded-[40px] bg-brand text-center text-background py-23 lg:py-28 xl:py-36.25">
-          <div className="mx-auto px-6.75 py-10 sm:p-0 sm:max-w-150 lg:max-w-200 xl:max-w-249 space-y-2 lg:space-y-3 xl:space-y-4 ">
-            <h2 className="font-poppins text-2xl lg:text-3xl xl:text-4xl font-semibold leading-8 xl:leading-12 text-center">
-              Master your closet, buy with purpose.
+          <div className={`purpose-cta-animation mx-auto space-y-2 px-6.75 py-10 sm:max-w-150 sm:p-0 lg:max-w-200 lg:space-y-3 xl:max-w-249 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
+            <h2 className="purpose-cta-animation__heading font-poppins text-center text-2xl font-semibold leading-8 lg:text-3xl xl:text-4xl xl:leading-12">
+              {['Master', 'your', 'closet,', 'buy', 'with', 'purpose.'].map((word) => (
+                <span key={word}>{word}</span>
+              ))}
             </h2>
 
             <p className="text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9 text-surface">

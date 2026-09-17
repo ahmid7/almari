@@ -25,3 +25,114 @@ body {
   color: var(--foreground);
   font-family: var(--font-tiktok-sans), sans-serif;
 }
+
+.pricing-motion__eyebrow,
+.pricing-motion__heading,
+.pricing-motion__copy,
+.pricing-motion__line,
+.pricing-motion__heading--words span {
+  opacity: 0;
+}
+
+.pricing-motion__eyebrow { color: var(--brand); font-size: 0.875rem; font-weight: 500; }
+.pricing-motion__heading { margin-top: 0.75rem; font-family: var(--font-poppins); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; }
+.pricing-motion__copy { margin-top: 1rem; max-width: 28rem; color: var(--surface); line-height: 1.6; }
+
+.pricing-motion--stagger.is-active .pricing-motion__eyebrow { animation: pricing-rise .55s ease-out forwards; }
+.pricing-motion--stagger.is-active .pricing-motion__heading { animation: pricing-rise .65s .14s ease-out forwards; }
+.pricing-motion--stagger.is-active .pricing-motion__copy { animation: pricing-rise .6s .3s ease-out forwards; }
+
+.pricing-motion--mask .pricing-motion__heading { clip-path: inset(0 0 100% 0); opacity: 1; transform: translateY(100%); }
+.pricing-motion--mask.is-active .pricing-motion__eyebrow { animation: pricing-fade .4s ease-out forwards; }
+.pricing-motion--mask.is-active .pricing-motion__heading { animation: pricing-mask .8s .1s cubic-bezier(.22,1,.36,1) forwards; }
+.pricing-motion--mask.is-active .pricing-motion__copy { animation: pricing-rise .55s .5s ease-out forwards; }
+
+.pricing-motion--sweep.is-active .pricing-motion__eyebrow { animation: pricing-fade .4s ease-out forwards; }
+.pricing-motion--sweep.is-active .pricing-motion__heading { animation: pricing-rise .6s .16s ease-out forwards; }
+.pricing-motion__line { display: block; height: 2px; width: 0; margin-top: 1rem; background: var(--brand); }
+.pricing-motion--sweep.is-active .pricing-motion__line { animation: pricing-line .7s .3s cubic-bezier(.22,1,.36,1) forwards; }
+.pricing-motion--sweep.is-active .pricing-motion__copy { animation: pricing-rise .55s .46s ease-out forwards; }
+
+.pricing-motion__heading--words { display: flex; flex-wrap: wrap; gap: 0 .25em; }
+.pricing-motion--drift .pricing-motion__heading--words { opacity: 1; }
+.pricing-motion__heading--words span { transform: translateX(-35px); }
+.pricing-motion__heading--words span:nth-child(even) { transform: translateX(35px); }
+.pricing-motion--drift.is-active .pricing-motion__eyebrow { animation: pricing-fade .4s ease-out forwards; }
+.pricing-motion--drift.is-active .pricing-motion__heading--words span { animation: pricing-drift .65s cubic-bezier(.22,1,.36,1) forwards; }
+.pricing-motion--drift.is-active .pricing-motion__heading--words span:nth-child(2) { animation-delay: .08s; }
+.pricing-motion--drift.is-active .pricing-motion__heading--words span:nth-child(3) { animation-delay: .16s; }
+.pricing-motion--drift.is-active .pricing-motion__heading--words span:nth-child(4) { animation-delay: .24s; }
+.pricing-motion--drift.is-active .pricing-motion__copy { animation: pricing-rise .55s .4s ease-out forwards; }
+
+@keyframes pricing-rise { to { opacity: 1; transform: translateY(0); } }
+@keyframes pricing-fade { to { opacity: 1; } }
+@keyframes pricing-mask { to { clip-path: inset(0 0 0 0); opacity: 1; transform: translateY(0); } }
+@keyframes pricing-line { to { opacity: 1; width: 100%; } }
+@keyframes pricing-drift { to { opacity: 1; transform: translateX(0); } }
+
+.pricing-motion--stagger .pricing-motion__eyebrow,
+.pricing-motion--stagger .pricing-motion__heading,
+.pricing-motion--stagger .pricing-motion__copy,
+.pricing-motion--sweep .pricing-motion__heading,
+.pricing-motion--sweep .pricing-motion__copy,
+.pricing-motion--drift .pricing-motion__copy { transform: translateY(20px); }
+
+.pricing-header-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.pricing-header-animation.is-visible > * { animation: pricing-rise .6s ease-out forwards; }
+.pricing-header-animation.is-visible > :nth-child(2) { animation-delay: .14s; }
+.pricing-header-animation.is-visible > :nth-child(3) { animation-delay: .3s; }
+
+.pricing-header-animation--drift .pricing-header-animation__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .25em;
+  opacity: 1;
+  transform: none;
+}
+
+.pricing-header-animation--drift .pricing-header-animation__heading span {
+  opacity: 0;
+  transform: translateX(-35px);
+}
+
+.pricing-header-animation--drift .pricing-header-animation__heading span:nth-child(even) { transform: translateX(35px); }
+.pricing-header-animation--drift.is-visible .pricing-header-animation__heading { animation: none; }
+.pricing-header-animation--drift.is-visible .pricing-header-animation__heading span { animation: pricing-drift .65s cubic-bezier(.22,1,.36,1) forwards; }
+.pricing-header-animation--drift.is-visible .pricing-header-animation__heading span:nth-child(2) { animation-delay: .08s; }
+.pricing-header-animation--drift.is-visible .pricing-header-animation__heading span:nth-child(3) { animation-delay: .16s; }
+.pricing-header-animation--drift.is-visible .pricing-header-animation__heading span:nth-child(4) { animation-delay: .24s; }
+
+.purpose-cta-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.purpose-cta-animation__heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 .25em;
+  opacity: 1;
+  transform: none;
+}
+
+.purpose-cta-animation__heading span { opacity: 0; transform: translateX(-35px); }
+.purpose-cta-animation__heading span:nth-child(even) { transform: translateX(35px); }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading { animation: none; }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading span { animation: pricing-drift .65s cubic-bezier(.22,1,.36,1) forwards; }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading span:nth-child(2) { animation-delay: .08s; }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading span:nth-child(3) { animation-delay: .16s; }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading span:nth-child(4) { animation-delay: .24s; }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading span:nth-child(5) { animation-delay: .32s; }
+.purpose-cta-animation.is-visible .purpose-cta-animation__heading span:nth-child(6) { animation-delay: .4s; }
+.purpose-cta-animation.is-visible > p { animation: pricing-rise .55s .5s ease-out forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-motion * { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; width: auto !important; }
+  .pricing-header-animation > * { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .purpose-cta-animation > *, .purpose-cta-animation__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }
+}

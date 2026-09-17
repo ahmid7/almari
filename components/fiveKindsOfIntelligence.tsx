@@ -96,46 +96,46 @@ function ProductVisual({ type }: { type: string }) {
 
 function FiveKindsOfIntelligence() {
   return (
-    <section className="bg-foreground text-background p-20 2xl:mx-auto 2xl:container ">
-      <div className="space-y-10">
-        <div className="space-y-4">
-          <p className="text-2xl font-medium text-brand leading-6">
+    <section className="bg-foreground text-background px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:mx-auto 2xl:container ">
+      <div className=" space-y-7 xl:space-y-10">
+        <div className="space-y-2 lg:space-y-3 xl:space-y-4">
+          <p className="text-base lg:text-lg xl:text-2xl font-medium text-brand leading-4.5 xl:leading-6">
             Five kinds of intelligence
           </p>
-          <h2 className="font-poppins text-5xl font-semibold leading-15">
+          <h2 className="font-poppins text-2xl lg:text-3xl xl:text-5xl font-semibold leading-8 xl:leading-15">
             Everything you own, working harder.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:gap-4.5 xl:gap-6">
           {intelligenceCards.map((card) => (
             <article
               key={card.eyebrow}
-              className="grid overflow-hidden outline-8 outline-muted lg:grid-cols-[32%_1fr] mb-6 last:mb-0"
+              className="grid overflow-hidden outline-8 outline-muted lg:grid-cols-[32%_1fr] mb-4.5 xl:mb-6 last:mb-0"
             >
-              <div className="border-8 border-foreground">
-                <div className="relative overflow-hidden bg-[#df4500] min-h-[445px] ">
+              <div className="border-6 xl:border-8 border-foreground">
+                <div className="relative overflow-hidden bg-[#df4500] min-h-[400px] sm:min-h-[405px] xl:min-h-[445px] ">
                   <ProductVisual type={card.visual} />
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center space-y-6 pl-11.25 bg-foreground border-l-8 border-muted">
-                <div className="space-y-4">
-                  <div className="space-y-2">
+              <div className="flex flex-col justify-center space-y-4 xl:space-y-6 pl-4.5 lg:pl-8.25 xl:pl-11.25 bg-foreground border-t-4 lg:border-t-0 lg:border-l-6 xl:border-l-8 border-muted pt-10 pb-21">
+                <div className="space-y-3 lg:space-y-4 xl:space-y-4">
+                  <div className="space-y-1 xl:space-y-2">
                     <p className="text-base text-brand font-medium">
                       {card.eyebrow}
                     </p>
-                    <h3 className="font-poppins font-semibold text-2xl">
+                    <h3 className="font-poppins font-semibold text-base lg:text-lg xl:text-2xl">
                       {card.title}
                     </h3>
                   </div>
 
-                  <p className="text-surface leading-6">{card.description}</p>
+                  <p className="text-surface leading-5 xl:leading-6">{card.description}</p>
                 </div>
 
-                <ul className="space-y-2 text-base leading-6 text-surface">
+                <ul className="space-y-1.5 xl:space-y-2 text-sm xl:text-base leading-4.5 xl:leading-6 text-surface">
                   {card.points.map((point) => (
-                    <li key={point} className="flex items-center gap-2">
+                    <li key={point} className="flex items-center gap-1.5 xl:gap-2">
                       <span className="text-brand">
                         <svg
                           width="12"

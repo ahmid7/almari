@@ -12,7 +12,7 @@ export default function Home() {
       <HowItworks />
       {/* <FiveKindsOfIntelligence /> */}
       <Pricing />
-      {/* <Faq /> */}
+      <Faq />
       <PurposeCta />
       <Footer />
     </main>

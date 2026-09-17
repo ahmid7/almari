@@ -14,7 +14,7 @@ export default function Home() {
       <Pricing />
       {/* <Faq /> */}
       <PurposeCta />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

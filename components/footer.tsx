@@ -8,19 +8,19 @@ const footerLinks = [
 
 function Footer() {
   return (
-    <footer className="pb-238.75 relative overflow-hidden bg-muted text-background">
-      <div className=" 2xl:mx-auto 2xl:container px-20 pt-25 relative z-20">
+    <footer className="pb-120 md:pb-150 lg:pb-210 xl:pb-238.75 relative overflow-hidden bg-muted text-background">
+      <div className=" 2xl:mx-auto 2xl:container px-4 sm:px-10 lg:px-14 xl:px-20 pt-20 sm:pt-12 lg:pt-18 xl:pt-25 relative z-20">
         <div
-          className="relative overflow-hidden rounded-[40px] p-20 bg-[#373737] pb-79.25"
+          className="relative overflow-hidden rounded-[40px] pt-10 p-4 sm:p-10 lg:p-14 xl:p-20 bg-[#373737] pb-[323px] sm:pb-40 md:pb-46 lg:pb-54 xl:pb-79.25"
           style={{
             backgroundImage: "url('/assets/images/pricing/static.webp')",
           }}
         >
-          <div className="grid gap-10 sm:grid-cols-[1fr_auto]">
-            <div className="max-w-98 space-y-4">
-              <div className="flex items-center gap-1 font-poppins text-5xl font-bold">
+          <div className="grid gap-10 md:gap-5 lg:gap-7 xl:gap-10 md:grid-cols-[1fr_auto]">
+            <div className="max-w-85 md:max-w-62 lg:max-w-80 xl:max-w-98 space-y-4 md:space-y-3 xl:space-y-4">
+              <div className="flex items-center gap-1 text-[40px] md:text-2xl lg:text-3xl xl:text-5xl font-bold font-unifraktur-cook">
                 <svg
-                  className="w-24.5 h-13"
+                  className="w-[97px] md:w-14.5 lg:w-18.5 xl:w-24.5 h-[50px] md:h-6 lg:h-9 xl:h-13"
                   viewBox="0 0 98 52"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -38,19 +38,22 @@ function Footer() {
                 </svg>
                 Almari
               </div>
-              <p className="text-base leading-6 text-surface">
+              <p className="text-sm xl:text-base leading-5 xl:leading-6 text-surface">
                 A wardrobe operating system. Know what you own, plan what to
                 wear, know what you actually need.
               </p>
             </div>
 
-            <nav className="grid grid-cols-3 gap-7.25 text-base">
+            <nav className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5.25 xl:gap-7.25 text-sm xl:text-base">
               {footerLinks.map((group) => (
-                <div key={group.title} className="space-y-4">
-                  <h2 className="font-medium text-2xl leading-9 text-background">
+                <div
+                  key={group.title}
+                  className="space-y-2 md:space-y-2.5 lg:space-y-3 xl:space-y-4"
+                >
+                  <h2 className="font-medium text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9 text-background">
                     {group.title}
                   </h2>
-                  <ul className="space-y-2 text-surface">
+                  <ul className="space-y-1.5 xl:space-y-2 text-surface">
                     {group.links.map((link) => (
                       <li key={link}>
                         <a
@@ -67,9 +70,9 @@ function Footer() {
             </nav>
           </div>
 
-          <div className="absolute left-20 -bottom-[70px] z-5 opacity-40">
+          <div className=" absolute  md:left-10 lg:left-14 xl:left-20 bottom-50 sm:-bottom-[70px] z-20 md:z-5 sm:opacity-40">
             <svg
-              className="w-[493.61px] h-[255.18px]"
+              className="hidden sm:block w-[260px] md:w-[300px] lg:w-[380px] h-[120px] md:h-[160px] lg:h-[210px] xl:w-[493.61px] xl:h-[255.18px]"
               viewBox="0 0 98 52"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -85,9 +88,35 @@ function Footer() {
                 stroke-width="0.8"
               />
             </svg>
+
+            <svg
+              width="336"
+              height="84"
+              viewBox="0 0 336 84"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="sm:hidden"
+            >
+              <g opacity="0.4">
+                <path
+                  d="M92.2988 18.4637H156.008L0.589355 1.82617L156.008 82.1734H92.2988V18.4637Z"
+                  fill="#DA4403"
+                />
+                <path
+                  d="M156.077 17.8252L156.008 19.1055H92.9409V48.8467L156.303 81.6035L156.008 82.8154H91.6567V49.627L0.294434 2.39648L0.657715 1.1875L156.077 17.8252Z"
+                  stroke="white"
+                  stroke-opacity="0.6"
+                  stroke-width="1.28368"
+                />
+                <path
+                  d="M184.271 27.5774C182.139 27.0342 180.071 26.7626 178.065 26.7626C173.135 26.7626 168.642 28.434 164.589 31.7769C164.61 31.568 164.537 31.0248 164.37 30.1473C164.224 29.2489 164.171 28.6952 164.213 28.4863C169.708 23.9733 175.683 20.4424 182.139 17.8934C190.58 20.4006 198.342 23.848 205.425 28.2355C204.965 28.9877 204.391 29.6458 203.701 30.21C203.012 30.7741 202.437 31.4218 201.978 32.153C201.831 32.55 201.758 33.1141 201.758 33.8454V35.5377L201.978 52.3358C202.04 53.6939 202.291 54.5401 202.73 54.8744L205.895 57.4756L200.379 65.0285L193.202 58.9485C193.662 55.6683 193.892 51.3748 193.892 46.0679H182.171C181.377 53.4641 179.11 59.732 175.37 64.8718C171.651 70.0115 168.298 74.0334 165.31 76.9376C164.433 76.3108 163.639 75.7885 162.928 75.3706C165.352 72.8425 167.159 69.9488 168.35 66.6895C169.562 63.4301 170.596 59.9932 171.453 56.3787C172.309 52.7433 172.738 49.1914 172.738 45.7232C172.738 42.234 171.975 38.9642 170.45 35.9138C175.527 33.3857 180.134 30.6069 184.271 27.5774ZM193.767 38.703C193.725 36.2167 193.704 34.6915 193.704 34.1274C193.704 33.5424 193.714 32.8843 193.735 32.153C191.667 30.6905 189.494 29.4891 187.217 28.5489C185.733 29.6563 184.605 30.9308 183.832 32.3724C183.059 33.7931 182.599 35.9033 182.453 38.703H193.767ZM223.32 57.883C219.726 61.8527 217.407 64.4017 216.363 65.5299C214.816 64.3599 213.27 63.1899 211.724 62.0198C210.199 60.8289 208.674 59.6485 207.149 58.4784C208.569 57.2457 209.499 56.1071 209.938 55.0624C210.377 54.0178 210.606 53.0253 210.627 52.0851L210.784 33.1246C210.784 31.7665 210.721 30.1473 210.596 28.2669C210.492 26.3865 210.032 24.7986 209.217 23.5032L219.559 17.8934C218.995 20.4006 218.661 23.0018 218.556 25.697C218.473 28.3922 218.431 31.1293 218.431 33.908L218.306 52.3045C218.306 53.8715 218.452 54.7595 218.744 54.9684C219.037 55.1773 220.562 56.1489 223.32 57.883ZM236.765 36.8226L240.494 32.153L248.517 38.0762L253.249 32.153L263.247 39.3925L262.307 43.0906L261.899 53.182C261.899 53.2865 261.899 53.3805 261.899 53.4641C261.899 54.4461 262.213 55.2609 262.839 55.9086C263.466 56.5563 264.177 57.0473 264.971 57.3816L258.703 65.0285C257.157 63.8167 255.966 62.7407 255.13 61.8005C254.315 60.8603 253.908 58.9277 253.908 56.0026C253.908 55.7937 253.908 55.5743 253.908 55.3445L254.127 43.7487C254.127 42.913 253.009 41.5445 250.774 39.6432L249.489 41.8684L249.019 53.182C249.019 53.2447 249.019 53.3074 249.019 53.3701C249.019 54.3938 249.332 55.24 249.959 55.9086C250.586 56.5563 251.306 57.0473 252.121 57.3816L245.853 65.0285L239.178 59.6694C240.369 58.2695 240.985 56.8279 241.027 55.3445L241.215 43.7487C241.215 42.8294 239.993 41.3774 237.548 39.3925L235.699 41.5863L235.417 53.182C235.396 54.2894 235.699 55.1878 236.326 55.8772C236.974 56.5458 237.705 57.0473 238.52 57.3816L232.252 65.0285L225.639 59.6694C226.83 58.2277 227.426 56.7861 227.426 55.3445L227.676 41.1162C227.676 40.1133 226.903 39.1105 225.357 38.1076L230.089 32.153L236.765 36.7913V36.8226ZM267.384 42.2131L279.606 32.2784L293.458 38.7657C291.829 40.1865 291.004 41.7848 290.983 43.5607L290.857 53.9342C290.857 54.6445 291.223 55.4489 291.954 56.3473C292.706 57.2457 293.417 57.9666 294.085 58.5098L287.755 65.0285L282.897 60.0454C281.727 60.9856 280.546 61.8527 279.356 62.6466C278.165 63.4197 277.099 64.2345 276.159 65.0911C273.025 63.9211 270.1 62.1139 267.384 59.6694C268.157 58.6874 268.606 57.2562 268.731 55.3758L268.637 45.9112C268.637 45.8276 268.637 45.744 268.637 45.6605C268.637 44.4278 268.219 43.2786 267.384 42.2131ZM278.133 39.7999C276.921 41.6176 276.316 43.2369 276.316 44.6576V52.3358C276.316 53.9028 276.598 55.0206 277.162 55.6892C277.642 56.3787 278.081 56.995 278.478 57.5383C278.896 58.0815 279.554 58.4784 280.452 58.7292L283.022 56.8801V42.4638L278.133 39.7999ZM307.499 36.7286L311.573 32.5918C315.772 35.4959 318.614 38.4419 320.097 41.4296L315.083 48.1363C314.519 46.4858 313.746 45.0337 312.764 43.7801C311.803 42.5265 310.194 41.2416 307.937 39.9253L306.903 41.3356L306.308 52.0225C306.245 53.1089 306.935 54.2371 308.376 55.4071C309.818 56.5772 310.936 57.3293 311.73 57.6636L306.527 65.0285L296.812 57.4756C297.982 56.0757 298.588 54.6341 298.63 53.1507L298.567 41.1162C298.504 40.1133 297.731 39.1105 296.248 38.1076L300.98 32.153L307.499 36.7286ZM321.476 38.1076L326.209 32.153L333.229 35.4437C332.978 36.3003 332.706 37.136 332.414 37.9509C332.121 38.7657 331.975 39.6014 331.975 40.4581L331.536 53.182C331.536 53.2865 331.536 53.3805 331.536 53.4641C331.536 54.4461 331.85 55.2609 332.477 55.9086C333.103 56.5563 333.824 57.0473 334.639 57.3816L328.371 65.0285L321.727 59.6694C322.939 58.2277 323.545 56.7861 323.545 55.3445L323.764 41.1162C323.764 40.1133 323.001 39.1105 321.476 38.1076ZM322.416 31.871L324.924 19.4917L334.232 23.2212L322.416 31.871Z"
+                  fill="#222121"
+                />
+              </g>
+            </svg>
           </div>
 
-          <p className="absolute left-0 z-10 bottom-[40px] text-2xl font-medium text-center w-full text-surface ">
+          <p className="absolute left-0 z-10 bottom-[65px] md:bottom-[24px] lg:bottom-[30px] xl:bottom-[40px] text-base lg:text-lg xl:text-2xl font-medium text-center w-full text-surface ">
             Almari — a ProdyIft Studio concept · designed &amp; built 2026
           </p>
         </div>
@@ -108,7 +137,8 @@ function Footer() {
 
 export default Footer;
 
-
-{/* <div className="mt-14 border-t border-white/10 pt-4 text-center text-sm text-surface">
+{
+  /* <div className="mt-14 border-t border-white/10 pt-4 text-center text-sm text-surface">
   Almari — a ProdyIft Studio concept · designed &amp; built 2026
-</div>; */}
+</div>; */
+}

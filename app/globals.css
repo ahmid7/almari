@@ -17,6 +17,7 @@
   --font-sans: var(--font-tiktok-sans);
   --font-tiktok: var(--font-tiktok-sans);
   --font-poppins: var(--font-poppins);
+  --font-unifraktur-cook: var(--font-unifraktur-cook);
 }
 
 body {

@@ -26,7 +26,11 @@ function PurposeCta() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-muted">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="bg-[linear-gradient(to_bottom,#323232_0%,#252525_58%,#161616_100%)]"
+    >
       <div className="2xl:mx-auto 2xl:container px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
         <div className="relative isolate overflow-hidden rounded-[30px] lg:rounded-[40px] bg-brand text-center text-background py-23 lg:py-28 xl:py-36.25">
           <div className={`purpose-cta-animation mx-auto space-y-2 px-6.75 py-10 sm:max-w-150 sm:p-0 lg:max-w-200 lg:space-y-3 xl:max-w-249 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>

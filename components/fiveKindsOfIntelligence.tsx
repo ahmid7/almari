@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import StackedDeck from "@/components/stackedDeck";
 
 const plannerOutfitImages = [
   "image1.png",
@@ -10,12 +11,6 @@ const plannerOutfitImages = [
   "image4.png",
 ];
 
-const fkiDeckImages = ["1.png", "2.png", "1.png"];
-const fkiDeckOffsets = [
-  { x: 33, y: 55, zIndex: 1 },
-  { x: 23, y: 20, zIndex: 2 },
-  { x: 13, y: 10, zIndex: 3 },
-];
 
 const intelligenceCards = [
   {
@@ -73,20 +68,23 @@ function ProductVisual({ type }: { type: string }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-px overflow-hidden rounded-md bg-[#f2f2f2] ">
-              {plannerOutfitImages.map((image) => (
-                <div
-                  key={image}
-                  className="relative w-full h-[72px] xl:h-[81.34px] rounded-md overflow-hidden "
-                >
-                  <Image
-                    src={`/assets/images/${image}`}
-                    alt=""
-                    fill
-                    className="size-full object-center object-cover"
-                  />
-                </div>
-              ))}
+            <div className="overflow-hidden rounded-md bg-[#f2f2f2]">
+              <div className="planner-outfit-carousel">
+                {[0, 1].map((group) => (
+                  <div key={group} className="planner-outfit-carousel__group grid grid-cols-4 gap-px">
+                    {plannerOutfitImages.map((image) => (
+                      <div key={`${group}-${image}`} className="relative h-[72px] w-full overflow-hidden rounded-md xl:h-[81.34px]">
+                        <Image
+                          src={`/assets/images/${image}`}
+                          alt=""
+                          fill
+                          className="size-full object-center object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -128,31 +126,7 @@ function ProductVisual({ type }: { type: string }) {
   }
 
   return (
-    <div className="relative min-h-[400px] sm:min-h-[405px] xl:min-h-[445px]">
-      <div className="absolute bottom-0 left-[8%] aspect-[3/4] w-[58%]">
-        {fkiDeckImages.map((image, index) => {
-          const offset = fkiDeckOffsets[index];
-
-          return (
-            <div
-              key={`${image}-${index}`}
-              className="absolute inset-0 overflow-hidden rounded-t-2xl border-2 border-white shadow-[0_18px_25px_rgba(0,0,0,0.3)]"
-              style={{
-                transform: `translate(${offset.x}px, ${offset.y}px)`,
-                zIndex: offset.zIndex,
-              }}
-            >
-              <Image
-                src={`/assets/images/fki/${image}`}
-                alt=""
-                fill
-                className="object-cover"
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <StackedDeck motion="deal" animateOnView />
   );
 }
 
@@ -180,6 +154,7 @@ function FiveKindsOfIntelligence() {
 
   return (
     <section
+      id="features"
       ref={sectionRef}
       className="bg-foreground text-background px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:mx-auto 2xl:container "
     >

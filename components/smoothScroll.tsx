@@ -9,6 +9,7 @@ function SmoothScroll({ children }: Readonly<{ children: ReactNode }>) {
       lerp: 0.08,
       smoothWheel: true,
       wheelMultiplier: 0.9,
+      anchors: { offset: -72 },
     });
 
     let frameId = 0;

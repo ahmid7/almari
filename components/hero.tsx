@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const plannerOutfitImages = [
   "image1.png",
@@ -14,12 +14,20 @@ const heroWardrobeImages = [
   { image: "hero-image1.png", title: "Denim and Top", reversed: false },
   { image: "hero-image2.png", title: "Waist Jacket", reversed: true },
 ];
+const heroHeadingWords = ["Your", "wardrobe,", "finally", "intelligent."];
 
-function Hero() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+function Hero({ animated = false }: { animated?: boolean }) {
+  const [hasStarted, setHasStarted] = useState(!animated);
+
+  useEffect(() => {
+    if (!animated) return;
+
+    const frameId = requestAnimationFrame(() => setHasStarted(true));
+    return () => cancelAnimationFrame(frameId);
+  }, [animated]);
 
   return (
-    <section className="relative isolate overflow-hidden">
+    <section id="hero" className="relative isolate overflow-hidden">
       <Image
         src="/assets/images/hero-bg.png"
         alt=""
@@ -27,13 +35,16 @@ function Hero() {
         priority
         className="-z-10 object-cover"
       />
-      <div className="pt-[140px] lg:pt-[180px] xl:pt-[211px] pb-[122px] xl:pb-[149px] 2xl:container 2xl:mx-auto px-4 sm:px-10 lg:px-14 xl:px-20 flex flex-col lg:flex-row lg:items-center justify-between gap-[30px] lg:gap-[72px] xl:gap-[90px]">
+      <div className={`hero-motion pt-[140px] lg:pt-[180px] xl:pt-[211px] pb-[122px] xl:pb-[149px] 2xl:container 2xl:mx-auto px-4 sm:px-10 lg:px-14 xl:px-20 flex flex-col lg:flex-row lg:items-center justify-between gap-[30px] lg:gap-[72px] xl:gap-[90px] ${hasStarted ? "is-active" : ""}`}>
         <div className="space-y-4 lg:space-y-4.5 xl:space-y-6 lg:basis-[580px] xl:basis-[622px]">
-          <h2 className="font-poppins font-semibold text-[40px] md:text-6xl xl:text-[80px] leading-13 md:leading-15 lg:leading-17 xl:leading-22 text-background">
-            Your wardrobe, finally{" "}
-            <span className="font-sansita italic">intelligent</span>.
+          <h2 className={`${animated ? "hero-motion__heading" : ""} font-poppins font-semibold text-[40px] md:text-6xl xl:text-[80px] leading-13 md:leading-15 lg:leading-17 xl:leading-22 text-background`}>
+            {heroHeadingWords.map((word, index) => (
+              <span key={word} className={word === "intelligent." ? "font-sansita italic" : ""}>
+                {word}{index < heroHeadingWords.length - 1 && " "}
+              </span>
+            ))}
           </h2>
-          <p className="text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9 text-surface">
+          <p className={`${animated ? "hero-motion__copy" : ""} text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9 text-surface`}>
             Almari turns everything you own into a living catalogue that plans
             what to wear, spots what you&apos;re missing, and stops you buying
             what you already have.
@@ -102,7 +113,7 @@ function Hero() {
         </div>
 
         <div className="space-y-4 lg:space-y-3 xl:space-y-4 lg:basis-[440px] xl:basis-[556px]">
-          <div className="rounded-2xl outline-[0.5px] outline-white/40 text-white p-3 xl:p-4 space-y-4.5 xl:space-y-6  bg-muted/24 w-full lg:w-[60%] mx-auto lg:w-full">
+          <div className={`${animated ? "hero-motion__planner" : ""} rounded-2xl outline-[0.5px] outline-white/40 text-white p-3 xl:p-4 space-y-4.5 xl:space-y-6  bg-muted/24 w-full lg:w-[60%] mx-auto lg:w-full`}>
             <div className="space-y-2.5 xl:space-y-4.5">
               <div className="font-medium space-y-1 xl:space-y-2">
                 <div className="flex justify-between text-sm xl:text-base">
@@ -115,21 +126,24 @@ function Hero() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 gap-px overflow-hidden rounded-md bg-[#f2f2f2] ">
-                {plannerOutfitImages.map((image) => (
-                  <div
-                    key={image}
-                    className="relative w-full h-[72px] xl:h-[81.34px] rounded-md overflow-hidden "
-                  >
-                    <Image
-                      src={`/assets/images/${image}`}
-                      alt=""
-                      fill
-                      className="size-full object-center object-cover"
-                    />
+                <div className="overflow-hidden rounded-md bg-[#f2f2f2]">
+                  <div className="planner-outfit-carousel">
+                    {[0, 1].map((group) => (
+                      <div key={group} className="planner-outfit-carousel__group grid grid-cols-4 gap-px">
+                        {plannerOutfitImages.map((image) => (
+                          <div key={`${group}-${image}`} className={`${animated ? "hero-motion__planner-item" : ""} relative h-[72px] w-full overflow-hidden rounded-md xl:h-[81.34px]`}>
+                            <Image
+                              src={`/assets/images/${image}`}
+                              alt=""
+                              fill
+                              className="size-full object-center object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
             </div>
 
             <div className="space-y-1.5 xl:space-y-2 text-sm xl:text-base">
@@ -147,7 +161,7 @@ function Hero() {
             {heroWardrobeImages.map(({ image, title, reversed }) => (
               <div
                 key={image}
-                className="relative h-[200px] md:h-[280px] xl:h-[358px] overflow-hidden rounded-2xl"
+                className={`${animated ? "hero-motion__wardrobe-card" : ""} relative h-[200px] overflow-hidden rounded-2xl md:h-[280px] xl:h-[358px]`}
               >
                 <Image
                   src={`/assets/images/${image}`}

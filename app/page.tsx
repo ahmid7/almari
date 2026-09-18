@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main>
       <NavBar/>
-      <Hero />
+      <Hero animated />
       <HowItworks />
       <FiveKindsOfIntelligence />
       <Pricing />

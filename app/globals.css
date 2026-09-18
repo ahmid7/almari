@@ -27,6 +27,105 @@ body {
   font-family: var(--font-tiktok-sans), sans-serif;
 }
 
+.planner-outfit-carousel {
+  display: flex;
+  width: 200%;
+  animation: planner-outfit-scroll 14s linear infinite;
+  will-change: transform;
+}
+
+.planner-outfit-carousel__group {
+  width: 50%;
+  flex: 0 0 50%;
+}
+
+.hero-motion__heading span { display: inline-block; }
+.hero-motion__planner,
+.hero-motion__planner-item,
+.hero-motion__wardrobe-card { will-change: transform, opacity; }
+
+.hero-motion__heading span,
+.hero-motion__copy,
+.hero-motion__planner,
+.hero-motion__planner-item,
+.hero-motion__wardrobe-card { opacity: 0; }
+.hero-motion__heading span { transform: translateY(38px); }
+.hero-motion__copy { transform: translateY(24px); }
+.hero-motion__planner { transform: translateY(42px) scale(.96); }
+.hero-motion__planner-item { transform: translateY(16px) scale(.94); }
+.hero-motion__wardrobe-card { transform: translateY(48px); }
+
+.hero-motion.is-active .hero-motion__heading span { animation: hero-text-reveal .72s cubic-bezier(.22,1,.36,1) forwards; }
+.hero-motion.is-active .hero-motion__heading span:nth-child(2) { animation-delay: .1s; }
+.hero-motion.is-active .hero-motion__heading span:nth-child(3) { animation-delay: .2s; }
+.hero-motion.is-active .hero-motion__heading span:nth-child(4) { animation-delay: .3s; }
+.hero-motion.is-active .hero-motion__copy { animation: hero-copy-in .6s .44s ease-out forwards; }
+.hero-motion.is-active .hero-motion__planner { animation: hero-planner-in .75s .42s cubic-bezier(.22,1,.36,1) forwards; }
+.hero-motion.is-active .hero-motion__planner-item { animation: hero-item-in .45s .75s cubic-bezier(.22,1,.36,1) forwards; }
+.hero-motion.is-active .hero-motion__planner-item:nth-child(2) { animation-delay: .83s; }
+.hero-motion.is-active .hero-motion__planner-item:nth-child(3) { animation-delay: .91s; }
+.hero-motion.is-active .hero-motion__planner-item:nth-child(4) { animation-delay: .99s; }
+.hero-motion.is-active .hero-motion__wardrobe-card { animation: hero-card-in .7s 1.05s cubic-bezier(.22,1,.36,1) forwards; }
+.hero-motion.is-active .hero-motion__wardrobe-card:nth-child(2) { animation-delay: 1.18s; }
+
+@keyframes hero-text-reveal { to { opacity: 1; transform: translateY(0); } }
+@keyframes hero-copy-in { to { opacity: 1; transform: translateY(0); } }
+@keyframes hero-planner-in { to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes hero-item-in { to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes hero-card-in { to { opacity: 1; transform: translateY(0); } }
+
+.stacked-deck {
+  position: relative;
+  min-height: 400px;
+}
+
+@media (min-width: 640px) { .stacked-deck { min-height: 405px; } }
+@media (min-width: 1280px) { .stacked-deck { min-height: 445px; } }
+.stacked-deck__cards { position: absolute; bottom: 0; left: 8%; aspect-ratio: 3 / 4; width: 58%; }
+.stacked-deck__card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 2px solid white;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 18px 25px rgb(0 0 0 / .3);
+  transform: translate(var(--deck-x), var(--deck-y));
+  will-change: transform, opacity;
+}
+
+.stacked-deck--deal .stacked-deck__card { opacity: 0; transform: translate(var(--deck-x), calc(var(--deck-y) + 65px)); }
+.stacked-deck--deal.is-active .stacked-deck__card { animation: deck-card-in 1.2s cubic-bezier(.22,1,.36,1) forwards; }
+.stacked-deck--deal.is-active .stacked-deck__card:nth-child(2) { animation-delay: .24s; }
+.stacked-deck--deal.is-active .stacked-deck__card:nth-child(3) { animation-delay: .48s; }
+
+.stacked-deck--fan .stacked-deck__card { opacity: 0; }
+.stacked-deck--fan .stacked-deck__card:nth-child(1) { transform: translate(calc(var(--deck-x) + 45px), calc(var(--deck-y) + 20px)) rotate(8deg); }
+.stacked-deck--fan .stacked-deck__card:nth-child(2) { transform: translate(calc(var(--deck-x) - 25px), calc(var(--deck-y) + 10px)) rotate(-6deg); }
+.stacked-deck--fan .stacked-deck__card:nth-child(3) { transform: translate(var(--deck-x), calc(var(--deck-y) - 35px)) rotate(3deg); }
+.stacked-deck--fan.is-active .stacked-deck__card { animation: deck-fan-in .75s cubic-bezier(.22,1,.36,1) forwards; }
+.stacked-deck--fan.is-active .stacked-deck__card:nth-child(2) { animation-delay: .1s; }
+.stacked-deck--fan.is-active .stacked-deck__card:nth-child(3) { animation-delay: .2s; }
+
+.stacked-deck--depth .stacked-deck__card { opacity: 0; transform: translate(var(--deck-x), calc(var(--deck-y) + 18px)) scale(.94); }
+.stacked-deck--depth.is-active .stacked-deck__card { animation: deck-depth-in .65s ease-out forwards; }
+.stacked-deck--depth.is-active .stacked-deck__card:nth-child(2) { animation-delay: .12s; }
+.stacked-deck--depth.is-active .stacked-deck__card:nth-child(3) { animation-delay: .24s; }
+
+.stacked-deck--lift { opacity: 0; transform: translateY(45px) scale(.96); }
+.stacked-deck--lift.is-active { animation: deck-lift .8s cubic-bezier(.22,1,.36,1) forwards; }
+
+.stacked-deck--front .stacked-deck__card:nth-child(3) { opacity: 0; transform: translate(var(--deck-x), calc(var(--deck-y) + 70px)); }
+.stacked-deck--front.is-active .stacked-deck__card:nth-child(3) { animation: deck-card-in .7s .35s cubic-bezier(.22,1,.36,1) forwards; }
+
+@keyframes deck-card-in { to { opacity: 1; transform: translate(var(--deck-x), var(--deck-y)); } }
+@keyframes deck-fan-in { to { opacity: 1; transform: translate(var(--deck-x), var(--deck-y)) rotate(0); } }
+@keyframes deck-depth-in { to { opacity: 1; transform: translate(var(--deck-x), var(--deck-y)) scale(1); } }
+@keyframes deck-lift { 70% { opacity: 1; transform: translateY(-7px) scale(1.01); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@keyframes planner-outfit-scroll {
+  to { transform: translateX(-50%); }
+}
+
 .pricing-motion__eyebrow,
 .pricing-motion__heading,
 .pricing-motion__copy,
@@ -248,6 +347,9 @@ body {
 @keyframes intelligence-fade { to { opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
+  .planner-outfit-carousel { animation: none; }
+  .hero-motion *, .hero-motion__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .stacked-deck, .stacked-deck * { animation: none !important; opacity: 1 !important; transform: none !important; }
   .pricing-motion * { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; width: auto !important; }
   .pricing-header-animation > * { animation: none !important; opacity: 1 !important; transform: none !important; }
   .purpose-cta-animation > *, .purpose-cta-animation__heading span { animation: none !important; opacity: 1 !important; transform: none !important; }

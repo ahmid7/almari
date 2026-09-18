@@ -24,7 +24,9 @@ const howItWorksSteps = [
 
 function HowItworks() {
   const sectionRef = useRef<HTMLElement>(null);
+  const imageFrameRef = useRef<HTMLDivElement>(null);
   const [hasEntered, setHasEntered] = useState(false);
+  const [imageParallax, setImageParallax] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -44,9 +46,46 @@ function HowItworks() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let frameId = 0;
+    const updateParallax = () => {
+      const frame = imageFrameRef.current;
+      if (!frame) return;
+
+      const rect = frame.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const frameCenter = rect.top + rect.height / 2;
+      const offset = Math.max(-34, Math.min(34, (viewportCenter - frameCenter) * 0.08));
+      setImageParallax(offset);
+    };
+
+    const requestUpdate = () => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(updateParallax);
+    };
+
+    requestUpdate();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
+
   return (
-    <section ref={sectionRef} className="relative px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:container 2xl:mx-auto bg-black space-y-10 md:space-y-7 xl:space-y-10">
-      <div className={`how-it-works-header-animation max-w-100 space-y-2 lg:max-w-130 lg:space-y-2.5 xl:max-w-171.5 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
+    <section id="how-it-works" ref={sectionRef} className="relative px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:container 2xl:mx-auto bg-black space-y-10 md:space-y-7 xl:space-y-10">
+      <Image
+        src="/assets/images/how-it-works-bg.png"
+        alt=""
+        fill
+        className="pointer-events-none z-0 object-cover"
+      />
+      <div className={`relative z-10 how-it-works-header-animation max-w-100 space-y-2 lg:max-w-130 lg:space-y-2.5 xl:max-w-171.5 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
         <p className=" font-medium text-base lg:text-lg xl:text-2xl text-brand leading-6 lg:leading-6.5 xl:leading-9">
           How Almari works
         </p>
@@ -61,14 +100,15 @@ function HowItworks() {
         </p>
       </div>
 
-      <div className="bg-[#1b1a1a] p-1 md:p-1.5 xl:p-2 space-y-1.5 xl:space-y-2">
-        <div className="p-1.5 xl:p-2 bg-foreground">
+      <div className="relative z-10 bg-[#1b1a1a] p-1 md:p-1.5 xl:p-2 space-y-1.5 xl:space-y-2">
+        <div ref={imageFrameRef} className="overflow-hidden bg-foreground p-1.5 xl:p-2">
           <Image
             src="/assets/images/howItWork/works.png"
             alt="how it works"
             width={1246}
             height={565}
-            className="w-full h-[581px] object-center object-cover md:h-auto"
+            className="h-[581px] w-full scale-[1.08] object-cover object-center will-change-transform md:h-auto"
+            style={{ transform: `translateY(${imageParallax}px) scale(1.08)` }}
           />
         </div>
 

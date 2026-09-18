@@ -1,14 +1,14 @@
 import Image from "next/image";
 
 const footerLinks = [
-  { title: "Product", links: ["Features", "Pricing", "Open App"] },
-  { title: "Company", links: ["About", "Journal", "Careers"] },
-  { title: "Legal", links: ["Privacy", "Terms", "Data"] },
+  { title: "Product", links: [{ label: "Features", href: "#features" }, { label: "Pricing", href: "#pricing" }, { label: "Open App", href: "#hero" }] },
+  { title: "Company", links: [{ label: "About", href: "#about" }, { label: "Journal", href: "#footer" }, { label: "Careers", href: "#footer" }] },
+  { title: "Legal", links: [{ label: "Privacy", href: "#footer" }, { label: "Terms", href: "#footer" }, { label: "Data", href: "#footer" }] },
 ];
 
 function Footer() {
   return (
-    <footer className="pb-120 md:pb-150 lg:pb-210 xl:pb-238.75 relative overflow-hidden bg-muted text-background">
+    <footer id="footer" className="pb-120 md:pb-150 lg:pb-210 xl:pb-238.75 relative overflow-hidden bg-[linear-gradient(to_bottom,#161616_0%,#252525_34%,#323232_62%)] text-background">
       <div className=" 2xl:mx-auto 2xl:container px-4 sm:px-10 lg:px-14 xl:px-20 pt-20 sm:pt-12 lg:pt-18 xl:pt-25 relative z-20">
         <div
           className="relative overflow-hidden rounded-[40px] pt-10 p-4 sm:p-10 lg:p-14 xl:p-20 bg-[#373737] pb-[323px] sm:pb-40 md:pb-46 lg:pb-54 xl:pb-79.25"
@@ -55,12 +55,12 @@ function Footer() {
                   </h2>
                   <ul className="space-y-1.5 xl:space-y-2 text-surface">
                     {group.links.map((link) => (
-                      <li key={link}>
+                      <li key={link.label}>
                         <a
                           className="leading-6 transition-colors hover:text-brand"
-                          href="#"
+                          href={link.href}
                         >
-                          {link}
+                          {link.label}
                         </a>
                       </li>
                     ))}

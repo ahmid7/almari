@@ -67,10 +67,15 @@ function Pricing() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
-      <div className="absolute inset-0 -z-10 opacity-35 [background-image:linear-gradient(30deg,transparent_48%,#4a4a4a_49%,#4a4a4a_51%,transparent_52%),linear-gradient(150deg,transparent_48%,#4a4a4a_49%,#4a4a4a_51%,transparent_52%)] [background-size:88px_52px]" />
+    <section id="pricing" ref={sectionRef} className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
+      <Image
+        src="/assets/images/pricing/pricing-bg.png"
+        alt=""
+        fill
+        className="pointer-events-none z-0 object-cover"
+      />
 
-      <div className="space-y-7 xl:space-y-10">
+      <div className="relative z-10 space-y-7 xl:space-y-10">
         <div className={`pricing-header-animation pricing-header-animation--drift max-w-[500px] space-y-2 lg:space-y-3 xl:max-w-[690px] xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
           <p className=" font-medium text-base lg:text-lg xl:text-2xl text-brand leading-6 lg:leading-6.5 xl:leading-9">
             Pricing

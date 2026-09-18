@@ -7,9 +7,9 @@ import { useEffect, useRef, useState } from "react";
 export type DeckMotion = "none" | "deal" | "fan" | "depth" | "lift" | "front";
 
 const deckCards = [
-  { image: "1.png", x: 33, y: 55, zIndex: 1 },
-  { image: "2.png", x: 23, y: 20, zIndex: 2 },
-  { image: "1.png", x: 13, y: 10, zIndex: 3 },
+  { image: "1.webp", x: 33, y: 55, zIndex: 1 },
+  { image: "2.webp", x: 23, y: 20, zIndex: 2 },
+  { image: "1.webp", x: 13, y: 10, zIndex: 3 },
 ];
 
 function StackedDeck({ motion = "none", isActive = true, animateOnView = false }: { motion?: DeckMotion; isActive?: boolean; animateOnView?: boolean }) {

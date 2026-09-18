@@ -124,7 +124,7 @@ function Footer() {
 
       <div className="absolute inset-0 z-10 size-full">
         <Image
-          src={"/assets/images/footer/background.png"}
+          src={"/assets/images/footer/background.webp"}
           alt="footer background"
           fill
           className="size-full object-center object-cover"

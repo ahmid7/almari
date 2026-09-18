@@ -4,15 +4,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const plannerOutfitImages = [
-  "image1.png",
-  "image2.png",
-  "image3.png",
-  "image4.png",
+  "image1.webp",
+  "image2.webp",
+  "image3.webp",
+  "image4.webp",
 ];
 
 const heroWardrobeImages = [
-  { image: "hero-image1.png", title: "Denim and Top", reversed: false },
-  { image: "hero-image2.png", title: "Waist Jacket", reversed: true },
+  { image: "hero-image1.webp", title: "Denim and Top", reversed: false },
+  { image: "hero-image2.webp", title: "Waist Jacket", reversed: true },
 ];
 const heroHeadingWords = ["Your", "wardrobe,", "finally", "intelligent."];
 
@@ -29,7 +29,7 @@ function Hero({ animated = false }: { animated?: boolean }) {
   return (
     <section id="hero" className="relative isolate overflow-hidden">
       <Image
-        src="/assets/images/hero-bg.png"
+        src="/assets/images/hero-bg.webp"
         alt=""
         fill
         priority

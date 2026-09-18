@@ -69,7 +69,7 @@ function Pricing() {
   return (
     <section id="pricing" ref={sectionRef} className="relative overflow-hidden bg-[#323232] 2xl:container 2xl:mx-auto px-4 py-20 sm:p-10 lg:p-14 xl:p-20">
       <Image
-        src="/assets/images/pricing/pricing-bg.png"
+        src="/assets/images/pricing/pricing-bg.webp"
         alt=""
         fill
         className="pointer-events-none z-0 object-cover"
@@ -100,7 +100,7 @@ function Pricing() {
               {plan.popular && (
                 <div className="absolute inset-x-2 top-2 h-24 overflow-hidden rounded-t-2xl lg:h-28 xl:h-35">
                   <Image
-                    src="/assets/plan-bg.png"
+                    src="/assets/plan-bg.webp"
                     alt=""
                     fill
                     className="object-cover object-center"

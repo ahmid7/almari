@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import StackedDeck from "@/components/stackedDeck";
 
 const plannerOutfitImages = [
-  "image1.png",
-  "image2.png",
-  "image3.png",
-  "image4.png",
+  "image1.webp",
+  "image2.webp",
+  "image3.webp",
+  "image4.webp",
 ];
 
 
@@ -107,7 +107,7 @@ function ProductVisual({ type }: { type: string }) {
       <div className="flex h-full  rounded-[20px] overflow-hidden  min-h-[400px] items-center justify-center sm:min-h-[405px] xl:min-h-[445px]">
         <div className="relative h-[320px] xl:h-[358px] w-[240px] xl:w-[270px] rounded-[20px] overflow-hidden ">
           <Image
-            src="/assets/images/fki/coat.png"
+            src="/assets/images/fki/coat.webp"
             alt="Neutral mid-weight jacket"
             fill
             className="object-cover"
@@ -145,7 +145,7 @@ function FiveKindsOfIntelligence() {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.2 },
+      { rootMargin: "0px 0px -15% 0px", threshold: 0.01 },
     );
 
     observer.observe(section);
@@ -181,7 +181,7 @@ function FiveKindsOfIntelligence() {
               <div className="border-6 xl:border-8 border-foreground">
                 <div className="relative min-h-[400px] overflow-hidden sm:min-h-[405px] xl:min-h-[445px]">
                   <Image
-                    src="/assets/images/orange-bg.png"
+                    src="/assets/images/orange-bg.webp"
                     alt=""
                     fill
                     className="object-cover"

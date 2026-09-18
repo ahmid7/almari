@@ -49,7 +49,7 @@ function PurposeCta() {
 
           <div className="absolute inset-0 -z-10 size-full">
             <Image
-              src="/assets/images/purpose-cta-bg.png"
+              src="/assets/images/purpose-cta-bg.webp"
               alt="Purpose CTA Background"
               className="size-full object-center object-cover"
               fill

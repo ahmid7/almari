@@ -27,8 +27,11 @@ const sansita = Sansita({
 })
 
 export const metadata: Metadata = {
-  title: "Next Tailwind App",
+  title: "Almari",
   description: "A Next.js app with Tailwind CSS.",
+  icons: {
+    icon: "/assets/Logo.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

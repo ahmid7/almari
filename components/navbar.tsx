@@ -8,7 +8,7 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full md:rounded-b-lg p-1 md:p-0.5 bg-white text-sm text-background xl:border-4 xl:text-base">
+    <header className="fixed inset-x-0 top-0 z-50 box-border max-w-full md:rounded-b-lg p-1 md:p-0.5 bg-white text-sm text-background xl:border-4 xl:text-base">
       <div className="flex items-center justify-between rounded-xl bg-muted">
         <div className="2xl:container 2xl:mx-auto px-4 sm:px-10 lg:px-14 xl:px-20 py-2.5 xl:py-3 flex items-center justify-between gap-3 xl:gap-4  w-full">
           <div className="">
@@ -91,7 +91,7 @@ function NavBar() {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute w-full left-0 right-0 top-full flex h-[calc(100dvh-65px)] flex-col border-4  bg-muted p-4 text-background text-2xl font-medium md:hidden">
+        <div className="absolute inset-x-0 top-full box-border flex h-[calc(100dvh-65px)] flex-col border-4 bg-muted p-4 text-background text-2xl font-medium md:hidden">
           <nav>
             <ul className="flex flex-col gap-4">
               <li>

@@ -80,7 +80,7 @@ function HowItworks() {
   return (
     <section id="how-it-works" ref={sectionRef} className="relative px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:container 2xl:mx-auto bg-black space-y-10 md:space-y-7 xl:space-y-10">
       <Image
-        src="/assets/images/how-it-works-bg.png"
+        src="/assets/images/how-it-works-bg.webp"
         alt=""
         fill
         className="pointer-events-none z-0 object-cover"
@@ -103,7 +103,7 @@ function HowItworks() {
       <div className="relative z-10 bg-[#1b1a1a] p-1 md:p-1.5 xl:p-2 space-y-1.5 xl:space-y-2">
         <div ref={imageFrameRef} className="overflow-hidden bg-foreground p-1.5 xl:p-2">
           <Image
-            src="/assets/images/howItWork/works.png"
+            src="/assets/images/howItWork/works.webp"
             alt="how it works"
             width={1246}
             height={565}

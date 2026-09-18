@@ -14,7 +14,10 @@ const heroWardrobeImages = [
   { image: "hero-image1.webp", title: "Denim and Top", reversed: false },
   { image: "hero-image2.webp", title: "Waist Jacket", reversed: true },
 ];
-const heroHeadingWords = ["Your", "wardrobe,", "finally", "intelligent."];
+const heroHeadingLines = [
+  ["Your", "wardrobe,"],
+  ["finally", "intelligent."],
+];
 
 function Hero({ animated = false }: { animated?: boolean }) {
   const [hasStarted, setHasStarted] = useState(!animated);
@@ -37,10 +40,14 @@ function Hero({ animated = false }: { animated?: boolean }) {
       />
       <div className={`hero-motion pt-[140px] lg:pt-[180px] xl:pt-[211px] pb-[122px] xl:pb-[149px] 2xl:container 2xl:mx-auto px-4 sm:px-10 lg:px-14 xl:px-20 flex flex-col lg:flex-row lg:items-center justify-between gap-[30px] lg:gap-[72px] xl:gap-[90px] ${hasStarted ? "is-active" : ""}`}>
         <div className="space-y-4 lg:space-y-4.5 xl:space-y-6 lg:basis-[580px] xl:basis-[622px]">
-          <h2 className={`${animated ? "hero-motion__heading" : ""} font-poppins font-semibold text-[40px] md:text-6xl xl:text-[80px] leading-13 md:leading-15 lg:leading-17 xl:leading-22 text-background`}>
-            {heroHeadingWords.map((word, index) => (
-              <span key={word} className={word === "intelligent." ? "font-sansita italic" : ""}>
-                {word}{index < heroHeadingWords.length - 1 && " "}
+          <h2 className={`hero-heading ${animated ? "hero-motion__heading" : ""} font-poppins font-semibold text-[40px] md:text-6xl xl:text-[80px] leading-13 md:leading-15 lg:leading-17 xl:leading-22 text-background`}>
+            {heroHeadingLines.map((line) => (
+              <span key={line.join("-")} className="hero-heading__line">
+                {line.map((word) => (
+                  <span key={word} className={`hero-heading__word ${word === "intelligent." ? "font-sansita italic" : ""}`}>
+                    {word}
+                  </span>
+                ))}
               </span>
             ))}
           </h2>

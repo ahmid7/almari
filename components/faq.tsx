@@ -72,7 +72,7 @@ function Faq() {
             const isOpen = openIndex === index;
 
             return (
-              <div key={faq.question} className={`faq-live-split group overflow-x-hidden text-sm xl:text-base leading-6 ${isOpen ? "is-open" : ""}`}>
+              <div key={faq.question} className={`faq-live-split group text-sm xl:text-base leading-6 ${isOpen ? "is-open" : ""}`}>
                 <div className="relative flex items-center justify-center gap-4 md:gap-2 xl:gap-3">
                   <button
                     type="button"

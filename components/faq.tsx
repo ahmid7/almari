@@ -72,13 +72,13 @@ function Faq() {
             const isOpen = openIndex === index;
 
             return (
-              <div key={faq.question} className="group text-sm xl:text-base leading-6">
+              <div key={faq.question} className={`faq-live-split group overflow-x-hidden text-sm xl:text-base leading-6 ${isOpen ? "is-open" : ""}`}>
                 <div className="relative flex items-center justify-center gap-4 md:gap-2 xl:gap-3">
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                     aria-expanded={isOpen}
-                    className={`flex-1 max-w-[420px] lg:max-w-[490px] xl:max-w-[535px] rounded-2xl p-4 md:p-3 xl:p-4 text-left  text-surface ${isOpen ? "bg-brand/16" : "bg-[#323232] hover:bg-[#3d3d3d]"}`}
+                    className={`faq-live-split__question flex-1 max-w-[420px] lg:max-w-[490px] xl:max-w-[535px] rounded-2xl p-4 md:p-3 xl:p-4 text-left text-surface ${isOpen ? "bg-brand/16" : "bg-[#323232] hover:bg-[#3d3d3d]"}`}
                   >
                     {faq.question}
                   </button>
@@ -86,17 +86,17 @@ function Faq() {
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                     aria-label={`${isOpen ? "Close" : "Open"} ${faq.question}`}
-                    className={`grid size-5 md:size-4 xl:size-5 shrink-0 place-items-center rounded-full border text-xs leading-none ${isOpen ? "border-brand bg-brand text-muted" : "border-[#e6e5e6] bg-[#323232] text-surface"}`}
+                    className={`faq-live-split__icon grid size-5 md:size-4 xl:size-5 shrink-0 place-items-center rounded-full border text-xs leading-none ${isOpen ? "border-brand bg-brand text-muted" : "border-[#e6e5e6] bg-[#323232] text-surface"}`}
                   >
                     {isOpen ? "−" : "+"}
                   </button>
                 </div>
 
-                {isOpen && (
-                  <p className="relative left-2 sm:left-15 lg:left-17 xl:left-[81px] mt-1.5 xl:mt-2 max-w-[435px] lg:max-w-[510px] xl:max-w-[551px] rounded-2xl bg-brand p-4 md:p-3 xl:p-4 text-sm leading-relaxed text-surface">
+                <div className="faq-live-split__answer-wrap">
+                  <p className="faq-live-split__answer max-w-[435px] lg:max-w-[510px] xl:max-w-[551px] rounded-2xl bg-brand text-sm leading-relaxed text-surface">
                     {faq.answer}
                   </p>
-                )}
+                </div>
               </div>
             );
           })}

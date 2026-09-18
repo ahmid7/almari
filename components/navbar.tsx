@@ -57,55 +57,33 @@ function NavBar() {
             }
             className="grid size-10 place-items-center text-background md:hidden"
           >
-            {isMenuOpen ? (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="size-7"
-                aria-hidden="true"
-              >
-                <path
-                  d="m6 6 12 12M18 6 6 18"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            ) : (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="size-7"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            )}
+            <span className="relative block size-6" aria-hidden="true">
+              <span className={`absolute left-0 top-1.5 h-px w-full bg-current transition-transform duration-300 ease-out ${isMenuOpen ? "translate-y-2.5 rotate-45" : ""}`} />
+              <span className={`absolute left-0 top-3 h-px w-full bg-current transition-opacity duration-200 ${isMenuOpen ? "opacity-0" : "opacity-100"}`} />
+              <span className={`absolute left-0 top-4.5 h-px w-full bg-current transition-transform duration-300 ease-out ${isMenuOpen ? "-translate-y-2.5 -rotate-45" : ""}`} />
+            </span>
           </button>
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="absolute inset-x-0 top-full box-border flex h-[calc(100dvh-65px)] flex-col border-4 bg-muted p-4 text-background text-2xl font-medium md:hidden">
+      <div
+        aria-hidden={!isMenuOpen}
+        className={`absolute inset-x-0 top-full box-border flex h-[calc(100dvh-65px)] flex-col border-4 bg-muted p-4 text-background text-2xl font-medium transition-[opacity,transform] duration-400 ease-[cubic-bezier(.22,1,.36,1)] md:hidden ${isMenuOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"}`}
+      >
           <nav>
             <ul className="flex flex-col gap-4">
               <li>
-                <a href="#how-it-works" onClick={() => setIsMenuOpen(false)}>
+                <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className={`block transition-[opacity,transform] duration-400 ease-out ${isMenuOpen ? "translate-x-0 opacity-100 delay-75" : "-translate-x-3 opacity-0"}`}>
                   How it Works
                 </a>
               </li>
               <li>
-                <a href="#features" onClick={() => setIsMenuOpen(false)}>
+                <a href="#features" onClick={() => setIsMenuOpen(false)} className={`block transition-[opacity,transform] duration-400 ease-out ${isMenuOpen ? "translate-x-0 opacity-100 delay-125" : "-translate-x-3 opacity-0"}`}>
                   Features
                 </a>
               </li>
               <li>
-                <a href="#pricing" onClick={() => setIsMenuOpen(false)}>
+                <a href="#pricing" onClick={() => setIsMenuOpen(false)} className={`block transition-[opacity,transform] duration-400 ease-out ${isMenuOpen ? "translate-x-0 opacity-100 delay-200" : "-translate-x-3 opacity-0"}`}>
                   Pricing
                 </a>
               </li>
@@ -113,12 +91,11 @@ function NavBar() {
           </nav>
           <a
             href="#"
-            className="mt-auto rounded-lg bg-brand py-5 text-center text-base font-medium text-white"
+            className={`mt-auto rounded-lg bg-brand py-5 text-center text-base font-medium text-white transition-[opacity,transform] duration-400 ease-out ${isMenuOpen ? "translate-y-0 opacity-100 delay-250" : "translate-y-3 opacity-0"}`}
           >
             Sign In
           </a>
-        </div>
-      )}
+      </div>
     </header>
   );
 }

@@ -1,53 +1,171 @@
-import Image from "next/image";
+"use client";
 
-const navItems = ["How it Works", "Features", "Pricing"];
-const outfitImages = ["image1.png", "image2.png", "image3.png", "image4.png"];
+import Image from "next/image";
+import { useState } from "react";
+
+const plannerOutfitImages = [
+  "image1.png",
+  "image2.png",
+  "image3.png",
+  "image4.png",
+];
+
+const heroWardrobeImages = [
+  { image: "hero-image1.png", title: "Denim and Top", reversed: false },
+  { image: "hero-image2.png", title: "Waist Jacket", reversed: true },
+];
 
 function Hero() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <section className="relative isolate min-h-screen overflow-hidden bg-[#12141d] text-background">
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_12%_82%,#00767c_0,transparent_25%),radial-gradient(circle_at_52%_0%,#8d2b1a_0,transparent_23%),radial-gradient(circle_at_91%_73%,#8b451f_0,transparent_26%),linear-gradient(120deg,#07090e_10%,#272039_48%,#0b1420_100%)]" />
-      <div className="absolute -left-[12%] top-[7%] -z-10 h-[90%] w-[70%] rotate-[-25deg] bg-[radial-gradient(ellipse_at_center,#5d436e_0,transparent_62%)] blur-3xl" />
-      <div className="absolute right-[4%] top-[10%] -z-10 h-[65%] w-[38%] rotate-[22deg] bg-[linear-gradient(115deg,transparent_18%,rgba(255,255,255,.28)_32%,transparent_46%)] blur-xl" />
+    <section className="relative isolate overflow-hidden">
+      <Image
+        src="/assets/images/hero-bg.png"
+        alt=""
+        fill
+        priority
+        className="-z-10 object-cover"
+      />
+      <div className="pt-[140px] lg:pt-[180px] xl:pt-[211px] pb-[122px] xl:pb-[149px] 2xl:container 2xl:mx-auto px-4 sm:px-10 lg:px-14 xl:px-20 flex flex-col lg:flex-row lg:items-center justify-between gap-[30px] lg:gap-[72px] xl:gap-[90px]">
+        <div className="space-y-4 lg:space-y-4.5 xl:space-y-6 lg:basis-[580px] xl:basis-[622px]">
+          <h2 className="font-poppins font-semibold text-[40px] md:text-6xl xl:text-[80px] leading-13 md:leading-15 lg:leading-17 xl:leading-22 text-background">
+            Your wardrobe, finally{" "}
+            <span className="font-sansita italic">intelligent</span>.
+          </h2>
+          <p className="text-base lg:text-lg xl:text-2xl leading-6 lg:leading-6.5 xl:leading-9 text-surface">
+            Almari turns everything you own into a living catalogue that plans
+            what to wear, spots what you&apos;re missing, and stops you buying
+            what you already have.
+          </p>
+          <div className="flex flex-col md:flex-row items-center gap-y-4 md:gap-x-4">
+            <button className="w-full lg:w-fit p-1 bg-white rounded-lg flex items-stretch gap-x-1 cursor-pointer">
+              <span className="flex-1 rounded-lg bg-brand text-background py-4 xl:py-[19.5px] px-6 lg:px-4.5 xl:px-[22.5px] text-sm xl:text-base font-medium">
+                {" "}
+                Build my wardrobe{" "}
+              </span>
+              <div className="rounded-lg bg-brand px-2.5 py-4.5 flex items-center">
+                <svg
+                  className="size-5 xl:size-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.5 12H5"
+                    stroke="#FEF7FF"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6"
+                    stroke="#FEF7FF"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </button>
 
-      <div className="mx-auto max-w-[1440px] px-1 pt-1 sm:px-2">
-        <header className="flex h-13 items-center justify-between rounded-b-lg border-x border-b-2 border-white/80 bg-[#323232] px-6 sm:px-10">
-          <a href="#" className="flex items-center gap-2">
-            <Image src="/assets/Logo.svg" alt="Almari" width={48} height={26} className="h-6 w-auto" />
-            <span className="font-unifraktur-cook text-xl text-white">Almari</span>
-          </a>
-          <nav className="hidden items-center gap-6 text-sm text-surface md:flex">
-            {navItems.map((item) => <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`} className="transition-colors hover:text-brand">{item}</a>)}
-          </nav>
-          <a href="#" className="rounded-lg bg-brand px-7 py-2 text-sm font-medium text-white transition-colors hover:bg-[#b83702]">Sign In</a>
-        </header>
+            <button className="w-full lg:w-fit p-1 bg-white/8 rounded-lg flex items-stretch gap-x-1 cursor-pointer">
+              <span className="flex-1 rounded-lg bg-white/8 text-background py-4 xl:py-[19.5px] px-6 lg:px-4.5 xl:px-[22.5px] text-sm xl:text-base font-medium">
+                {" "}
+                How it works{" "}
+              </span>
+              <div className="rounded-lg bg-white/8 px-2.5 py-4.5 flex items-center">
+                <svg
+                  className="size-5 xl:size-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.5 12H5"
+                    stroke="#FEF7FF"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6"
+                    stroke="#FEF7FF"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
 
-        <div className="grid min-h-[calc(100vh-56px)] items-center gap-12 px-7 pb-14 pt-20 sm:px-14 lg:grid-cols-[1.08fr_.92fr] lg:px-20">
-          <div className="max-w-[690px]">
-            <h1 className="font-poppins text-5xl font-semibold leading-[1.12] tracking-[-.035em] sm:text-6xl xl:text-[5.3rem]">
-              Your wardrobe,<br />finally <em className="font-normal">intelligent.</em>
-            </h1>
-            <p className="mt-6 max-w-[620px] text-lg leading-relaxed text-surface sm:text-xl">Almari turns everything you own into a living catalogue that plans what to wear, spots what you&apos;re missing, and stops you buying what you already have.</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#pricing" className="flex items-center gap-5 rounded-lg border-2 border-white bg-brand py-3 pl-5 pr-3 text-sm font-medium shadow-[0_0_0_1px_#da4403]">Build my wardrobe <span className="grid size-7 place-items-center rounded bg-white/15 text-xl">→</span></a>
-              <a href="#how-it-works" className="flex items-center gap-5 rounded-lg bg-white/10 py-3 pl-7 pr-3 text-sm font-medium text-surface backdrop-blur-sm">How it works <span className="grid size-7 place-items-center rounded bg-white/10 text-xl">→</span></a>
+        <div className="space-y-4 lg:space-y-3 xl:space-y-4 lg:basis-[440px] xl:basis-[556px]">
+          <div className="rounded-2xl outline-[0.5px] outline-white/40 text-white p-3 xl:p-4 space-y-4.5 xl:space-y-6  bg-muted/24 w-full lg:w-[60%] mx-auto lg:w-full">
+            <div className="space-y-2.5 xl:space-y-4.5">
+              <div className="font-medium space-y-1 xl:space-y-2">
+                <div className="flex justify-between text-sm xl:text-base">
+                  <span>Tomorrow 8:30</span>
+                  <span>22°C</span>
+                </div>
+                <div className="flex justify-between text-lg xl:text-xl">
+                  <span>Board Meeting</span>
+                  <span>Sunny</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-4 gap-px overflow-hidden rounded-md bg-[#f2f2f2] ">
+                {plannerOutfitImages.map((image) => (
+                  <div
+                    key={image}
+                    className="relative w-full h-[72px] xl:h-[81.34px] rounded-md overflow-hidden "
+                  >
+                    <Image
+                      src={`/assets/images/${image}`}
+                      alt=""
+                      fill
+                      className="size-full object-center object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-1.5 xl:space-y-2 text-sm xl:text-base">
+              <span className=" inline-block px-1.75 py-0.75 rounded-full text-white  font-medium bg-white/24">
+                Why this?
+              </span>
+              <p className="text-surface leading-5 xl:leading-6">
+                Matches the rain, reads sharp for a 10 AM pitch, and pulls two
+                pieces you haven&apos;t worn in 12 days.
+              </p>
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[575px] space-y-4 lg:mt-8">
-            <div className="rounded-2xl border border-white/25 bg-[#27303d]/65 p-4 shadow-2xl backdrop-blur-md">
-              <div className="flex justify-between text-xs text-surface"><span>Tomorrow 8:30</span><span>22°C</span></div>
-              <div className="mt-2 flex justify-between text-lg"><span>Board Meeting</span><span>Sunny</span></div>
-              <div className="mt-3 grid grid-cols-4 overflow-hidden rounded-lg bg-[#f2f2f2]">
-                {outfitImages.map((image) => <div key={image} className="relative h-16 border-r border-[#d5d5d5] last:border-0"><Image src={`/assets/images/${image}`} alt="" fill className="object-cover" /></div>)}
+          <div className="grid grid-cols-2 gap-2 xl:gap-4">
+            {heroWardrobeImages.map(({ image, title, reversed }) => (
+              <div
+                key={image}
+                className="relative h-[200px] md:h-[280px] xl:h-[358px] overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={`/assets/images/${image}`}
+                  alt="Wardrobe item"
+                  fill
+                  className="object-cover object-center"
+                />
+
+                <div className="absolute bottom-2 left-0 right-0 w-full space-y-2 px-2 text-white font-medium">
+                  {!reversed && <p className="text-sm xl:text-base">{title}</p>}
+                  <div className="flex items-center justify-between text-xs">
+                    <span>Worn: 22</span>
+                    <span>$15/Wear</span>
+                  </div>
+                  {reversed && <p className="text-base">{title}</p>}
+                </div>
               </div>
-              <span className="mt-4 inline-block rounded-full bg-white/15 px-2 py-1 text-[10px]">Why this?</span>
-              <p className="mt-2 text-[11px] leading-relaxed text-surface">Matches the rain, reads sharp for a 10 AM pitch, and pulls two pieces you haven&apos;t worn in 12 days.</p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative aspect-[.78] overflow-hidden rounded-2xl bg-[#d7d7d7]"><Image src="/assets/images/fki/1.png" alt="Denim and top" fill className="object-cover" /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-4 pb-5 pt-14"><p className="text-lg">Denim and Top</p><div className="mt-1 flex justify-between text-[10px] text-white/80"><span>Worn: 22</span><span>$15/Wear</span></div></div></div>
-              <div className="relative aspect-[.78] overflow-hidden rounded-2xl bg-[#d7d7d7]"><Image src="/assets/images/fki/coat.png" alt="Waist jacket" fill className="object-cover" /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-4 pb-5 pt-14"><p className="text-lg">Waist Jacket</p><div className="mt-1 flex justify-between text-[10px] text-white/80"><span>Worn: 22</span><span>$15/Wear</span></div></div></div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, TikTok_Sans, UnifrakturCook } from "next/font/google";
+import { Poppins, TikTok_Sans, UnifrakturCook, Sansita } from "next/font/google";
 import SmoothScroll from "@/components/smoothScroll";
 import "./globals.css";
 
@@ -20,6 +20,12 @@ const unifrakturCook = UnifrakturCook({
   weight: ["700"],
 });
 
+const sansita = Sansita({
+  variable: "--font-sansita",
+  subsets: ["latin"],
+  weight: ["400"]
+})
+
 export const metadata: Metadata = {
   title: "Next Tailwind App",
   description: "A Next.js app with Tailwind CSS.",
@@ -29,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${tiktokSans.variable} ${poppins.variable} ${unifrakturCook.variable} h-full antialiased `}
+      className={`${tiktokSans.variable} ${poppins.variable} ${unifrakturCook.variable} ${sansita.variable} h-full antialiased `}
     >
       <body className="min-h-full flex flex-col text-[#fef7ff]">
         <SmoothScroll>{children}</SmoothScroll>

@@ -1,6 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+
+const plannerOutfitImages = [
+  "image1.png",
+  "image2.png",
+  "image3.png",
+  "image4.png",
+];
+
+const fkiDeckImages = ["1.png", "2.png", "1.png"];
+const fkiDeckOffsets = [
+  { x: 33, y: 55, zIndex: 1 },
+  { x: 23, y: 20, zIndex: 2 },
+  { x: 13, y: 10, zIndex: 3 },
+];
 
 const intelligenceCards = [
   {
@@ -44,57 +59,100 @@ const intelligenceCards = [
 function ProductVisual({ type }: { type: string }) {
   if (type === "planner") {
     return (
-      <div className="absolute inset-x-[9%] top-[14%] rounded-xl bg-[#bd4316] p-3 text-[9px] text-white shadow-xl">
-        <div className="flex justify-between">
-          <span>Tomorrow 8:30</span>
-          <span>22°C</span>
+      <div className="px-3 xl:px-4.75 flex items-center  h-full min-h-[400px] sm:min-h-[405px] xl:min-h-[445px] ">
+        <div className="rounded-2xl p-3 xl:p-4 space-y-4.5 xl:space-y-6  bg-muted/24 w-full sm:w-[60%] mx-auto lg:w-full">
+          <div className="space-y-2.5 xl:space-y-4.5">
+            <div className="font-medium space-y-1 xl:space-y-2">
+              <div className="flex justify-between text-sm xl:text-base">
+                <span>Tomorrow 8:30</span>
+                <span>22°C</span>
+              </div>
+              <div className="flex justify-between text-lg xl:text-xl">
+                <span>Board Meeting</span>
+                <span>Sunny</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-4 gap-px overflow-hidden rounded-md bg-[#f2f2f2] ">
+              {plannerOutfitImages.map((image) => (
+                <div
+                  key={image}
+                  className="relative w-full h-[72px] xl:h-[81.34px] rounded-md overflow-hidden "
+                >
+                  <Image
+                    src={`/assets/images/${image}`}
+                    alt=""
+                    fill
+                    className="size-full object-center object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-1.5 xl:space-y-2 text-sm xl:text-base">
+            <span className=" inline-block px-1.75 py-0.75 rounded-full text-white  font-medium bg-white/24">
+              Why this?
+            </span>
+            <p className="text-surface leading-5 xl:leading-6">
+              Matches the rain, reads sharp for a 10 AM pitch, and pulls two
+              pieces you haven&apos;t worn in 12 days.
+            </p>
+          </div>
         </div>
-        <div className="mt-1 flex justify-between text-sm">
-          <span>Board Meeting</span>
-          <span>Sunny</span>
-        </div>
-        <div className="mt-3 grid grid-cols-4 gap-px overflow-hidden rounded bg-white text-center text-lg">
-          <span className="bg-[#f2f2f2] py-3">♟</span>
-          <span className="bg-[#f2f2f2] py-3">♜</span>
-          <span className="bg-[#f2f2f2] py-3">◒</span>
-          <span className="bg-[#f2f2f2] py-3">♛</span>
-        </div>
-        <span className="mt-3 inline-block rounded bg-white/20 px-1.5 py-0.5">
-          Why this?
-        </span>
-        <p className="mt-2 leading-relaxed">
-          Matches the rain, reads sharp for a 10 AM pitch, and pulls two pieces
-          you haven&apos;t worn in 12 days.
-        </p>
       </div>
     );
   }
 
   if (type === "jacket") {
     return (
-      <>
-        <div className="absolute left-[22%] top-[12%] h-[65%] w-[56%] rounded-t-2xl bg-[#d7d4ce] shadow-xl" />
-        <div className="absolute left-[29%] top-[34%] h-[44%] w-[42%] rounded-[45%_45%_18%_18%] bg-[#b8a88d] shadow-lg" />
-        <div className="absolute bottom-[5%] left-[17%] right-[12%] rounded-xl bg-[#9f3d18] p-3 text-xs text-white shadow-lg">
-          <strong>A neutral mid-weight jacket</strong>
-          <br />
-          <span className="text-[10px]">
-            Bridges your shirts and knits for spring
-          </span>
+      <div className="flex h-full  rounded-[20px] overflow-hidden  min-h-[400px] items-center justify-center sm:min-h-[405px] xl:min-h-[445px]">
+        <div className="relative h-[320px] xl:h-[358px] w-[240px] xl:w-[270px] rounded-[20px] overflow-hidden ">
+          <Image
+            src="/assets/images/fki/coat.png"
+            alt="Neutral mid-weight jacket"
+            fill
+            className="object-cover"
+          />
         </div>
-      </>
+
+        <div className="hidden md:block absolute bottom-5 w-[50%] lg:w-[85%] mx-auto p-3 xl:p-4 bg-muted/40 rounded-2xl backdrop-blur-lg">
+          <h4 className="text-lg xl:text-xl font-medium">A neutral mid-weight jacket</h4>
+          <p className="text-sm xl:text-base ">
+            {" "}
+            Bridges your shirts and knits for spring
+          </p>
+        </div>
+      </div>
     );
   }
 
   return (
-    <>
-      <div className="absolute bottom-0 left-[17%] h-[77%] w-[48%] rounded-t-[44%] border-x-4 border-white bg-[#bdbdbd] shadow-[7px_0_0_#d5d5d5,14px_0_0_#f2f2f2]" />
-      <div className="absolute left-[31%] top-[27%] h-[27%] w-[27%] rounded-t-[50%] bg-[#151515]" />
-      <div className="absolute bottom-0 left-[35%] h-[43%] w-[20%] bg-gradient-to-r from-[#537079] via-[#a1aeb1] to-[#445d66]" />
-      <div className="absolute left-[21%] top-[22%] rounded-full bg-white/80 px-3 py-1 text-xs text-[#323232]">
-        ◧ &nbsp; 142 Items
+    <div className="relative min-h-[400px] sm:min-h-[405px] xl:min-h-[445px]">
+      <div className="absolute bottom-0 left-[8%] aspect-[3/4] w-[58%]">
+        {fkiDeckImages.map((image, index) => {
+          const offset = fkiDeckOffsets[index];
+
+          return (
+            <div
+              key={`${image}-${index}`}
+              className="absolute inset-0 overflow-hidden rounded-t-2xl border-2 border-white shadow-[0_18px_25px_rgba(0,0,0,0.3)]"
+              style={{
+                transform: `translate(${offset.x}px, ${offset.y}px)`,
+                zIndex: offset.zIndex,
+              }}
+            >
+              <Image
+                src={`/assets/images/fki/${image}`}
+                alt=""
+                fill
+                className="object-cover"
+              />
+            </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -121,9 +179,14 @@ function FiveKindsOfIntelligence() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-foreground text-background px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:mx-auto 2xl:container ">
+    <section
+      ref={sectionRef}
+      className="bg-foreground text-background px-4 py-20 sm:p-10 lg:p-14 xl:p-20 2xl:mx-auto 2xl:container "
+    >
       <div className=" space-y-7 xl:space-y-10">
-        <div className={`intelligence-header-animation space-y-2 lg:space-y-3 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}>
+        <div
+          className={`intelligence-header-animation space-y-2 lg:space-y-3 xl:space-y-4 ${hasEntered ? "is-visible" : ""}`}
+        >
           <p className="text-base lg:text-lg xl:text-2xl font-medium text-brand leading-4.5 xl:leading-6">
             Five kinds of intelligence
           </p>
@@ -138,11 +201,19 @@ function FiveKindsOfIntelligence() {
           {intelligenceCards.map((card) => (
             <article
               key={card.eyebrow}
-              className="grid overflow-hidden outline-8 outline-muted lg:grid-cols-[32%_1fr] mb-4.5 xl:mb-6 last:mb-0"
+              className="grid overflow-hidden outline-8 outline-muted lg:grid-cols-[38%_1fr] xl:grid-cols-[32%_1fr] mb-4.5 xl:mb-6 last:mb-0"
             >
               <div className="border-6 xl:border-8 border-foreground">
-                <div className="relative overflow-hidden bg-[#df4500] min-h-[400px] sm:min-h-[405px] xl:min-h-[445px] ">
-                  <ProductVisual type={card.visual} />
+                <div className="relative min-h-[400px] overflow-hidden sm:min-h-[405px] xl:min-h-[445px]">
+                  <Image
+                    src="/assets/images/orange-bg.png"
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="relative z-10 h-full">
+                    <ProductVisual type={card.visual} />
+                  </div>
                 </div>
               </div>
 
@@ -157,12 +228,17 @@ function FiveKindsOfIntelligence() {
                     </h3>
                   </div>
 
-                  <p className="text-surface leading-5 xl:leading-6">{card.description}</p>
+                  <p className="text-surface leading-5 xl:leading-6">
+                    {card.description}
+                  </p>
                 </div>
 
                 <ul className="space-y-1.5 xl:space-y-2 text-sm xl:text-base leading-4.5 xl:leading-6 text-surface">
                   {card.points.map((point) => (
-                    <li key={point} className="flex items-center gap-1.5 xl:gap-2">
+                    <li
+                      key={point}
+                      className="flex items-center gap-1.5 xl:gap-2"
+                    >
                       <span className="text-brand">
                         <svg
                           width="12"

@@ -95,9 +95,20 @@ function Pricing() {
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className="relative rounded-3xl bg-foreground p-2 h-137.5 md:h-112 xl:h-139.5 space-y-3 xl:space-y-4"
+              className="relative overflow-hidden rounded-3xl bg-foreground p-2 h-137.5 md:h-112 xl:h-139.5 space-y-3 xl:space-y-4"
             >
-              <div className="space-y-3 xl:space-y-4">
+              {plan.popular && (
+                <div className="absolute inset-x-2 top-2 h-24 overflow-hidden rounded-t-2xl lg:h-28 xl:h-35">
+                  <Image
+                    src="/assets/plan-bg.png"
+                    alt=""
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+              )}
+
+              <div className="relative z-10 space-y-3 xl:space-y-4">
                 {plan.popular && (
                   <span className="absolute top-4 right-6 px-3 xl:px-4 py-1 bg-brand text-sm xl:text-base rounded text-white ">
                     Popular

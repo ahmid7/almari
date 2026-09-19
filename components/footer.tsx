@@ -8,7 +8,7 @@ const footerLinks = [
 
 function Footer() {
   return (
-    <footer id="footer" className="pb-120 md:pb-150 lg:pb-210 xl:pb-238.75 relative overflow-hidden bg-[linear-gradient(to_bottom,#161616_0%,#252525_34%,#323232_62%)] text-background">
+    <footer id="footer" className="pb-120 md:pb-140 lg:pb-210 xl:pb-238.75 relative overflow-hidden bg-[linear-gradient(to_bottom,#161616_0%,#252525_34%,#323232_62%)] text-background">
       <div className=" 2xl:mx-auto 2xl:container px-4 sm:px-10 lg:px-14 xl:px-20 pt-20 sm:pt-12 lg:pt-18 xl:pt-25 relative z-20">
         <div
           className="relative overflow-hidden rounded-[40px] pt-10 p-4 sm:p-10 lg:p-14 xl:p-20 bg-[#373737] pb-[323px] sm:pb-40 md:pb-46 lg:pb-54 xl:pb-79.25"
@@ -122,12 +122,20 @@ function Footer() {
         </div>
       </div>
 
-      <div className="absolute inset-0 z-10 size-full">
+      <div className="absolute md:top-0 z-10 w-full h-[500px] bottom-0 overflow-hidden md:h-[1100px] lg:h-[1400px] xl:h-[1900px]">
+        <Image
+          src={"/assets/images/footer-mobile.webp"}
+          alt="footer background"
+          fill
+          className="size-full object-center object-cover md:hidden"
+          quality={75}
+        />
+        
         <Image
           src={"/assets/images/footer/background.webp"}
           alt="footer background"
           fill
-          className="size-full object-center object-cover"
+          className="hidden size-full object-center object-cover md:block"
           quality={75}
         />
       </div>
@@ -136,9 +144,3 @@ function Footer() {
 }
 
 export default Footer;
-
-{
-  /* <div className="mt-14 border-t border-white/10 pt-4 text-center text-sm text-surface">
-  Almari — a ProdyIft Studio concept · designed &amp; built 2026
-</div>; */
-}
